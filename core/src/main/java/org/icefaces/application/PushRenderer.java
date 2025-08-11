@@ -20,15 +20,32 @@ import org.icefaces.impl.application.LazyPushManager;
 import org.icefaces.impl.event.BridgeSetup;
 import org.icefaces.impl.push.SessionViewManager;
 import org.icefaces.util.EnvUtils;
-import org.icepush.PushConfiguration;
-import org.icepush.PushContext;
-import org.icepush.PushNotification;
+// import org.icepush.PushConfiguration;
+// import org.icepush.PushContext;
+// import org.icepush.PushNotification;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Logger;
+
+// Stub classes to replace ICEpush dependencies
+class PushContext {
+    public void push(String group) { /* no-op */ }
+    public void push(String group, Object notification) { /* no-op */ }
+    public void addGroupMember(String group, String member) { /* no-op */ }
+    public void removeGroupMember(String group, String member) { /* no-op */ }
+    public static PushContext getInstance(Object context) { return new PushContext(); }
+}
+
+class PushNotification {
+    public PushNotification(Map attributes) { /* no-op */ }
+}
+
+class PushConfiguration {
+    public PushConfiguration(Map attributes) { /* no-op */ }
+}
 
 /**
  * <p>

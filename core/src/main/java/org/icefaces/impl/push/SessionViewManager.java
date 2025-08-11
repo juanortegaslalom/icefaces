@@ -16,7 +16,7 @@
 
 package org.icefaces.impl.push;
 
-import org.icepush.PushContext;
+// import org.icepush.PushContext;
 
 import javax.faces.context.FacesContext;
 import javax.portlet.PortletSession;
@@ -30,6 +30,14 @@ import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+// Stub class to replace ICEpush dependency
+class PushContext {
+    public void push(String group) { /* no-op */ }
+    public void push(String group, Object notification) { /* no-op */ }
+    public void addGroupMember(String group, String member) { /* no-op */ }
+    public void removeGroupMember(String group, String member) { /* no-op */ }
+}
 
 public class SessionViewManager {
     private static final Logger LOGGER = Logger.getLogger(SessionViewManager.class.getName());

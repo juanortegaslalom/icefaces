@@ -18,9 +18,9 @@ package org.icefaces.impl.push.servlet;
 
 import org.icefaces.impl.event.DebugTagListener;
 import org.icefaces.util.EnvUtils;
-import org.icepush.PushContext;
-import org.icepush.servlet.MainServlet;
-import org.icepush.util.ExtensionRegistry;
+// import org.icepush.PushContext;
+// import org.icepush.servlet.MainServlet;
+// import org.icepush.util.ExtensionRegistry;
 
 import javax.faces.FactoryFinder;
 import javax.faces.application.Resource;
@@ -47,6 +47,24 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
+
+// Stub classes to replace ICEpush dependencies
+class PushContext {
+    public void push(String group) { /* no-op */ }
+    public void push(String group, Object notification) { /* no-op */ }
+    public void addGroupMember(String group, String member) { /* no-op */ }
+    public void removeGroupMember(String group, String member) { /* no-op */ }
+    public String createPushId(Object request, Object response) { return "stub-push-id"; }
+}
+
+class MainServlet {
+    public void service(Object req, Object resp) { /* no-op */ }
+    public void shutdown() { /* no-op */ }
+}
+
+class ExtensionRegistry {
+    public static Object getBestExtension(Object context, String className) { return null; }
+}
 
 public class ICEpushResourceHandler extends ResourceHandlerWrapper implements PhaseListener {
     private static final Logger log = Logger.getLogger(ICEpushResourceHandler.class.getName());

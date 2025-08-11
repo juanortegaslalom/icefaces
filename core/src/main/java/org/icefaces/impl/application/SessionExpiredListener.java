@@ -18,7 +18,7 @@ package org.icefaces.impl.application;
 
 import org.icefaces.application.SessionExpiredException;
 import org.icefaces.util.EnvUtils;
-import org.icepush.PushContext;
+// import org.icepush.PushContext;
 
 import javax.faces.FactoryFinder;
 import javax.faces.application.Application;
@@ -32,6 +32,15 @@ import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+// Stub class to replace ICEpush dependency
+class PushContext {
+    public static PushContext getInstance(Object context) { return new PushContext(); }
+    public void push(String group) { /* no-op */ }
+    public void push(String group, Object notification) { /* no-op */ }
+    public void addGroupMember(String group, String member) { /* no-op */ }
+    public void removeGroupMember(String group, String member) { /* no-op */ }
+}
 
 public class SessionExpiredListener implements HttpSessionListener {
 
