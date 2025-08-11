@@ -15,13 +15,16 @@
   ~ governing permissions and limitations under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.icefaces</groupId>
     <artifactId>bundle-parent</artifactId>
-    <version>3.4.0-SNAPSHOT</version>
+    <version>3.3.0</version>
     <packaging>pom</packaging>
     <name>ICEfaces</name>
     <description>ICEfaces Parent Project</description>
@@ -72,7 +75,7 @@
     </scm>
 
     <modules>
-        <module>icepush</module>
+        <!-- <module>icepush</module> -->
         <module>core</module>
         <module>ace</module>
         <module>compat</module>
@@ -116,7 +119,7 @@
         </tld.title>
 
         <!-- Versions of JSF implementations -->
-        <mojarra.version>2.1.26-SNAPSHOT</mojarra.version>
+        <mojarra.version>2.1.26</mojarra.version>
         <!--<mojarra.version>2.2.1</mojarra.version>-->
 
         <myfaces.version>2.1.12</myfaces.version>
@@ -203,11 +206,11 @@
         </repository>
         <repository>
             <id>java.net</id>
-            <url>http://download.java.net/maven/2</url>
+            <url>https://download.java.net/maven/2</url>
         </repository>
         <repository>
             <id>maven.org</id>
-            <url>http://repo1.maven.org/maven2</url>
+            <url>https://repo1.maven.org/maven2</url>
         </repository>
         <repository>
             <id>jvnet-nexus-releases</id>
@@ -220,16 +223,8 @@
           <url>https://maven.java.net/content/repositories/snapshots/</url>
         </repository>
         <repository>
-            <id>releases</id>
-            <url>http://anonsvn.icefaces.org/repo/maven2/releases</url>
-        </repository>
-        <repository>
-            <id>snapshots</id>
-            <url>http://anonsvn.icefaces.org/repo/maven2/snapshots</url>
-        </repository>
-        <repository>
-            <id>apache.org</id>
-            <url>https://repository.apache.org/content/repositories/snapshots</url>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
         </repository>
     </repositories>
 

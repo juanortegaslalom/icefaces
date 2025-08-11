@@ -1,0 +1,23 @@
+services:
+  icefaces-build:
+    image: maven:3.8.6-jdk-8
+    container_name: icefaces_build
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: >
+      mvn -Dmaven.wagon.http.ssl.insecure=true
+          -Dmaven.wagon.http.ssl.allowall=true
+          -Dmaven.wagon.http.blocked=false
+          clean package
+
+
+  icefaces-run:
+    image: tomcat:8.5-jdk8
+    container_name: icefaces_run
+    depends_on:
+      - icefaces-build
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./samples/showcase/showcase/target/showcase.war:/usr/local/tomcat/webap ps/showcase.war
