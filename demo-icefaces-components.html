@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ace="http://www.icefaces.org/icefaces/components"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <title>ICEfaces Legacy Components Demo - Before Modernization</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <!-- ICEfaces CSS -->
+    <h:outputStylesheet library="icefaces.ace" name="themes/ace-ui-lightness/theme.css"/>
+    <h:outputStylesheet library="ace-ui-lightness" name="theme.css"/>
+    
+    <style type="text/css">
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        
+        .header p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 1.2em;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .component-section {
+            margin: 30px 0;
+            padding: 25px;
+            border: 2px solid #ecf0f1;
+            border-radius: 10px;
+            background: #fafafa;
+        }
+        
+        .component-title {
+            color: #2c3e50;
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+        }
+        
+        .component-description {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .form-group {
+            margin: 15px 0;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        .output-display {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+        
+        .modernization-banner {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin: 30px 0;
+            border-radius: 10px;
+        }
+        
+        .modernization-banner h3 {
+            margin: 0 0 10px 0;
+        }
+        
+        /* ICEfaces component styling overrides */
+        .ui-datatable {
+            width: 100% !important;
+        }
+        
+        .ui-datatable th {
+            background: #3498db !important;
+            color: white !important;
+            text-align: center !important;
+        }
+        
+        .ui-datatable-odd {
+            background-color: #f8f9fa !important;
+        }
+        
+        .ui-datatable-even {
+            background-color: white !important;
+        }
+        
+        .ace-autocompleteentry {
+            width: 100% !important;
+        }
+        
+        .ace-chart {
+            margin: 20px 0 !important;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <div class="demo-container">
+        <div class="header">
+            <h1>🚀 ICEfaces Legacy Application</h1>
+            <p>Demonstration of ACE Components - Before Angular Modernization</p>
+        </div>
+        
+        <div class="content">
+            <!-- Project Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">80+</div>
+                    <div class="stat-label">ACE Components</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24</div>
+                    <div class="stat-label">UI Themes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">JSF 2.1</div>
+                    <div class="stat-label">Framework</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2013</div>
+                    <div class="stat-label">Legacy Year</div>
+                </div>
+            </div>
+            
+            <h:form id="demoForm">
+                <!-- AutoComplete Component -->
+                <div class="component-section">
+                    <h3 class="component-title">🔍 AutoComplete Entry</h3>
+                    <p class="component-description">
+                        Legacy JSF component for autocomplete functionality with server-side filtering
+                    </p>
+                    
+                    <div class="form-group">
+                        <label for="cityAutoComplete">Search Cities:</label>
+                        <ace:autoCompleteEntry id="cityAutoComplete"
+                                               value="#{autoCompleteEntryBean.selectedText}"
+                                               rows="10" 
+                                               width="100%"
+                                               placeholder="Type to search cities..."
+                                               filterMatchMode="contains">
+                            <f:selectItem itemLabel="New York, USA" itemValue="New York"/>
+                            <f:selectItem itemLabel="Los Angeles, USA" itemValue="Los Angeles"/>
+                            <f:selectItem itemLabel="London, UK" itemValue="London"/>
+                            <f:selectItem itemLabel="Paris, France" itemValue="Paris"/>
+                            <f:selectItem itemLabel="Tokyo, Japan" itemValue="Tokyo"/>
+                            <f:selectItem itemLabel="Sydney, Australia" itemValue="Sydney"/>
+                            <f:selectItem itemLabel="Berlin, Germany" itemValue="Berlin"/>
+                            <f:selectItem itemLabel="Madrid, Spain" itemValue="Madrid"/>
+                            <f:selectItem itemLabel="Rome, Italy" itemValue="Rome"/>
+                            <f:selectItem itemLabel="Toronto, Canada" itemValue="Toronto"/>
+                        </ace:autoCompleteEntry>
+                    </div>
+                    
+                    <div class="output-display">
+                        <strong>Selected:</strong> #{autoCompleteEntryBean.selectedText}
+                    </div>
+                </div>
+                
+                <!-- Data Table Component -->
+                <div class="component-section">
+                    <h3 class="component-title">📊 Data Table</h3>
+                    <p class="component-description">
+                        Server-side data table with pagination, sorting, and filtering capabilities
+                    </p>
+                    
+                    <ace:dataTable id="sampleTable"
+                                   value="#{dataTableBean.carsData}"
+                                   var="car"
+                                   paginator="true"
+                                   paginatorPosition="bottom"
+                                   rows="5"
+                                   sortBy="#{car.model}"
+                                   style="width: 100%;">
+                        
+                        <ace:column headerText="ID" sortBy="#{car.id}">
+                            <h:outputText value="#{car.id}"/>
+                        </ace:column>
+                        
+                        <ace:column headerText="Model" sortBy="#{car.model}" filterBy="#{car.model}">
+                            <h:outputText value="#{car.model}"/>
+                        </ace:column>
+                        
+                        <ace:column headerText="Manufacturer" sortBy="#{car.manufacturer}">
+                            <h:outputText value="#{car.manufacturer}"/>
+                        </ace:column>
+                        
+                        <ace:column headerText="Year" sortBy="#{car.year}">
+                            <h:outputText value="#{car.year}"/>
+                        </ace:column>
+                        
+                        <ace:column headerText="Price" sortBy="#{car.price}">
+                            <h:outputText value="#{car.price}">
+                                <f:convertNumber type="currency" currencySymbol="$"/>
+                            </h:outputText>
+                        </ace:column>
+                        
+                        <ace:column headerText="Actions">
+                            <ace:pushButton value="Edit" styleClass="btn-small"/>
+                            <ace:pushButton value="Delete" styleClass="btn-small btn-danger"/>
+                        </ace:column>
+                    </ace:dataTable>
+                </div>
+                
+                <!-- Chart Component -->
+                <div class="component-section">
+                    <h3 class="component-title">📈 Interactive Charts</h3>
+                    <p class="component-description">
+                        Legacy charting with limited customization and mobile responsiveness
+                    </p>
+                    
+                    <ace:chart id="salesChart"
+                               value="#{chartBean.barData}"
+                               type="bar"
+                               animated="true"
+                               style="height: 300px; width: 100%;">
+                    </ace:chart>
+                </div>
+                
+                <!-- Form Controls -->
+                <div class="component-section">
+                    <h3 class="component-title">📝 Form Controls</h3>
+                    <p class="component-description">
+                        Traditional form elements with server-side validation and state management
+                    </p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="form-group">
+                            <label>Date Picker:</label>
+                            <ace:dateTimeEntry id="datePicker"
+                                               value="#{formBean.selectedDate}"
+                                               pattern="MM/dd/yyyy"
+                                               popup="true"/>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Slider Control:</label>
+                            <ace:sliderEntry id="slider"
+                                             value="#{formBean.sliderValue}"
+                                             min="0"
+                                             max="100"
+                                             step="5"/>
+                            <div class="output-display">Value: #{formBean.sliderValue}</div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                        <div class="form-group">
+                            <label>Select Menu:</label>
+                            <ace:selectMenu id="selectMenu"
+                                            value="#{formBean.selectedCategory}">
+                                <f:selectItem itemLabel="Electronics" itemValue="electronics"/>
+                                <f:selectItem itemLabel="Clothing" itemValue="clothing"/>
+                                <f:selectItem itemLabel="Books" itemValue="books"/>
+                                <f:selectItem itemLabel="Home & Garden" itemValue="home"/>
+                            </ace:selectMenu>
+                        </div>
+                        
+                        <div class="form-group">
+                            <ace:pushButton id="submitBtn"
+                                            value="Process Form"
+                                            actionListener="#{formBean.processForm}"
+                                            styleClass="btn-primary"/>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Accordion Panel -->
+                <div class="component-section">
+                    <h3 class="component-title">📋 Accordion Panels</h3>
+                    <p class="component-description">
+                        Collapsible content panels for organizing information hierarchy
+                    </p>
+                    
+                    <ace:accordionPanel id="accordion" activeIndex="0">
+                        <ace:tab title="Legacy Architecture Issues">
+                            <h4>Current Challenges:</h4>
+                            <ul>
+                                <li>Tightly coupled UI and business logic</li>
+                                <li>Server-side rendering limits performance</li>
+                                <li>Limited mobile responsiveness</li>
+                                <li>Difficult testing and maintenance</li>
+                                <li>Outdated technology stack</li>
+                            </ul>
+                        </ace:tab>
+                        
+                        <ace:tab title="Modernization Benefits">
+                            <h4>After Angular Migration:</h4>
+                            <ul>
+                                <li>Reactive, component-based architecture</li>
+                                <li>Mobile-first responsive design</li>
+                                <li>TypeScript for better maintainability</li>
+                                <li>Modern testing frameworks</li>
+                                <li>Improved user experience</li>
+                            </ul>
+                        </ace:tab>
+                        
+                        <ace:tab title="Technology Stack">
+                            <h4>Current: ICEfaces 3.3.0</h4>
+                            <p>Java JSF framework with server-side rendering</p>
+                            <h4>Future: Angular + Spring Boot</h4>
+                            <p>Modern SPA with REST API backend</p>
+                        </ace:tab>
+                    </ace:accordionPanel>
+                </div>
+            </h:form>
+            
+            <div class="modernization-banner">
+                <h3>🚀 Ready for Modernization!</h3>
+                <p>This legacy ICEfaces application will be transformed into a modern Angular + Spring Boot architecture</p>
+                <p><strong>Timeline:</strong> 24 weeks | <strong>Approach:</strong> Gradual migration | <strong>Risk:</strong> Minimal</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ICEfaces JavaScript -->
+    <h:outputScript library="icefaces.ace" name="ace/ace.js"/>
+    <h:outputScript library="ace-jquery" name="ui/ui.js"/>
+</h:body>
+</html>

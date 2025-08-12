@@ -55,7 +55,7 @@ public class ProductInfo {
     /**
      * The date that this build was done.
      */
-    public static String BUILD_DATE = "250811";
+    public static String BUILD_DATE = "250812";
 
     /**
      * A configurable integer value used to uniquely identify a build.
