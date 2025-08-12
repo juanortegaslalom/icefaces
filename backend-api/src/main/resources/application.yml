@@ -72,6 +72,13 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: create-drop
+    defer-datasource-initialization: true
+  
+  # SQL initialization for sample data
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:data.sql
       
 # Enable H2 console in development
   h2:

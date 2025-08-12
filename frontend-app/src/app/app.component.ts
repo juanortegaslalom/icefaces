@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterModule } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 // Angular Material imports
@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
@@ -16,12 +17,14 @@ import { MatListModule } from '@angular/material/list';
   imports: [
     CommonModule,
     RouterOutlet,
+    RouterModule,
     HttpClientModule,
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
     MatButtonModule,
-    MatListModule
+    MatListModule,
+    MatSidenavModule
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']

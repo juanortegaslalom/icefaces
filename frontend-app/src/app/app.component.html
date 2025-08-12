@@ -1,91 +1,36 @@
 <!-- ICEfaces Modernization - Angular Frontend -->
 <div class="app-container">
-  <header class="app-header">
-    <mat-toolbar color="primary">
-      <mat-icon>rocket_launch</mat-icon>
-      <span class="app-title">ICEfaces Modernization</span>
-      <span class="spacer"></span>
-      <span class="app-subtitle">Angular + Spring Boot</span>
-    </mat-toolbar>
-  </header>
+  <mat-toolbar color="primary" class="app-toolbar">
+    <mat-icon>rocket_launch</mat-icon>
+    <span class="app-title">ICEfaces Modernization</span>
+    <span class="spacer"></span>
+    
+    <!-- Navigation Links -->
+    <button mat-button routerLink="/dashboard" routerLinkActive="active-link">
+      <mat-icon>dashboard</mat-icon>
+      Dashboard
+    </button>
+    <button mat-button routerLink="/cars" routerLinkActive="active-link">
+      <mat-icon>directions_car</mat-icon>
+      Cars
+    </button>
+    <button mat-button routerLink="/cities" routerLinkActive="active-link">
+      <mat-icon>location_city</mat-icon>
+      Cities
+    </button>
+    <button mat-button routerLink="/employees" routerLinkActive="active-link">
+      <mat-icon>people</mat-icon>
+      Employees
+    </button>
+    
+    <span class="app-subtitle">Angular + Spring Boot</span>
+  </mat-toolbar>
 
   <main class="app-main">
-    <div class="welcome-section">
-      <mat-card class="welcome-card">
-        <mat-card-header>
-          <mat-card-title>🎉 Phase 1: Foundation Setup Complete!</mat-card-title>
-          <mat-card-subtitle>Modern Angular frontend successfully connected to Spring Boot API</mat-card-subtitle>
-        </mat-card-header>
-        
-        <mat-card-content>
-          <div class="status-grid">
-            <div class="status-item">
-              <mat-icon color="accent">check_circle</mat-icon>
-              <span>Angular 17 Application</span>
-            </div>
-            <div class="status-item">
-              <mat-icon color="accent">check_circle</mat-icon>
-              <span>Angular Material UI</span>
-            </div>
-            <div class="status-item">
-              <mat-icon color="accent">check_circle</mat-icon>
-              <span>Spring Boot Backend</span>
-            </div>
-            <div class="status-item">
-              <mat-icon color="accent">check_circle</mat-icon>
-              <span>CORS Configuration</span>
-            </div>
-          </div>
-
-          <div class="api-test-section">
-            <h3>Backend API Connection Test</h3>
-            <div class="api-buttons">
-              <button mat-raised-button color="primary" (click)="testHealthEndpoint()">
-                Test Health Endpoint
-              </button>
-              <button mat-raised-button color="accent" (click)="testInfoEndpoint()">
-                Test Info Endpoint
-              </button>
-            </div>
-            
-            <div class="api-response" *ngIf="apiResponse">
-              <mat-card class="response-card">
-                <mat-card-content>
-                  <pre>{{ apiResponse | json }}</pre>
-                </mat-card-content>
-              </mat-card>
-            </div>
-          </div>
-
-          <div class="next-steps">
-            <h3>Next Steps - Phase 2: Data Layer Modernization</h3>
-            <mat-list>
-              <mat-list-item>
-                <mat-icon matListItemIcon>storage</mat-icon>
-                <div matListItemTitle>Create JPA entities for ICEfaces models</div>
-              </mat-list-item>
-              <mat-list-item>
-                <mat-icon matListItemIcon>layers</mat-icon>
-                <div matListItemTitle>Implement repository layer</div>
-              </mat-list-item>
-              <mat-list-item>
-                <mat-icon matListItemIcon>swap_horiz</mat-icon>
-                <div matListItemTitle>Create DTO classes for API communication</div>
-              </mat-list-item>
-              <mat-list-item>
-                <mat-icon matListItemIcon>settings</mat-icon>
-                <div matListItemTitle>Set up database migrations</div>
-              </mat-list-item>
-            </mat-list>
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </div>
+    <router-outlet></router-outlet>
   </main>
 
   <footer class="app-footer">
-    <p>ICEfaces to Angular + Spring Boot Modernization | Phase 1 of 7 Complete</p>
+    <p>ICEfaces to Angular + Spring Boot Modernization | Phases 1-5 Complete ✅</p>
   </footer>
 </div>
-
-<router-outlet></router-outlet>
