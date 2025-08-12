@@ -144,43 +144,6 @@ import { EmployeeService, EmployeeStatistics } from '../../services/employee.ser
         </div>
       </div>
 
-      <!-- Technology Comparison -->
-      <div class="comparison-section">
-        <h2>Modernization Benefits</h2>
-        <div class="comparison-cards">
-          <mat-card class="comparison-card legacy-card">
-            <mat-card-header>
-              <mat-card-title>❌ Legacy ICEfaces</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <ul>
-                <li>Server-side rendering</li>
-                <li>Full page reloads</li>
-                <li>JSF 2.1 limitations</li>
-                <li>Monolithic architecture</li>
-                <li>Limited mobile support</li>
-                <li>Heavyweight components</li>
-              </ul>
-            </mat-card-content>
-          </mat-card>
-
-          <mat-card class="comparison-card modern-card">
-            <mat-card-header>
-              <mat-card-title>✅ Modern Angular + Spring Boot</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <ul>
-                <li>Client-side rendering</li>
-                <li>SPA navigation</li>
-                <li>Latest web standards</li>
-                <li>Microservices ready</li>
-                <li>Mobile-first design</li>
-                <li>Lightweight & fast</li>
-              </ul>
-            </mat-card-content>
-          </mat-card>
-        </div>
-      </div>
 
       <!-- Loading States -->
       <div *ngIf="loading" class="loading-container">
@@ -314,45 +277,6 @@ import { EmployeeService, EmployeeStatistics } from '../../services/employee.ser
       color: #666;
     }
 
-    .comparison-section {
-      margin-bottom: 40px;
-    }
-
-    .comparison-section h2 {
-      text-align: center;
-      margin-bottom: 24px;
-      color: #333;
-    }
-
-    .comparison-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-    }
-
-    .comparison-card {
-      text-align: center;
-    }
-
-    .legacy-card {
-      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
-      color: white;
-    }
-
-    .modern-card {
-      background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
-      color: white;
-    }
-
-    .comparison-card ul {
-      text-align: left;
-      margin: 16px 0;
-    }
-
-    .comparison-card li {
-      margin-bottom: 8px;
-      opacity: 0.9;
-    }
 
     .loading-container {
       display: flex;
