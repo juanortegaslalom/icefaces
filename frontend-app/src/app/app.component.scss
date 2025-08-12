@@ -1,0 +1,180 @@
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.app-header {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  .app-title {
+    margin-left: 8px;
+    font-size: 1.2em;
+    font-weight: 500;
+  }
+  
+  .app-subtitle {
+    font-size: 0.9em;
+    opacity: 0.8;
+  }
+}
+
+.app-main {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.welcome-section {
+  width: 100%;
+  max-width: 800px;
+}
+
+.welcome-card {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  
+  mat-card-header {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 12px 12px 0 0;
+    margin: -16px -16px 16px -16px;
+    
+    mat-card-title {
+      font-size: 1.5em;
+      margin-bottom: 8px;
+    }
+    
+    mat-card-subtitle {
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #4caf50;
+  
+  mat-icon {
+    color: #4caf50;
+  }
+  
+  span {
+    font-weight: 500;
+    color: #2c3e50;
+  }
+}
+
+.api-test-section {
+  margin: 30px 0;
+  
+  h3 {
+    color: #2c3e50;
+    margin-bottom: 16px;
+  }
+}
+
+.api-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.api-response {
+  margin-top: 16px;
+}
+
+.response-card {
+  background: #f8f9fa;
+  border-left: 4px solid #3498db;
+  
+  pre {
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    color: #2c3e50;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+}
+
+.next-steps {
+  margin-top: 30px;
+  
+  h3 {
+    color: #2c3e50;
+    margin-bottom: 16px;
+  }
+}
+
+mat-list {
+  .mat-mdc-list-item {
+    padding: 8px 0;
+    
+    mat-icon {
+      color: #3498db;
+    }
+  }
+}
+
+.app-footer {
+  background: rgba(0, 0, 0, 0.1);
+  color: white;
+  text-align: center;
+  padding: 16px;
+  
+  p {
+    margin: 0;
+    opacity: 0.9;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .app-main {
+    padding: 16px;
+  }
+  
+  .welcome-card {
+    mat-card-header {
+      padding: 16px;
+      
+      mat-card-title {
+        font-size: 1.3em;
+      }
+    }
+  }
+  
+  .status-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .api-buttons {
+    flex-direction: column;
+    
+    button {
+      width: 100%;
+    }
+  }
+}

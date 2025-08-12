@@ -1,0 +1,119 @@
+# ICEfaces Modernization API - Application Configuration
+
+spring:
+  application:
+    name: icefaces-modernization-api
+  
+  profiles:
+    active: dev
+
+  # JPA Configuration
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+
+  # H2 Database Configuration (Development)
+  datasource:
+    url: jdbc:h2:mem:modernization_db
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+    
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+# Server Configuration
+server:
+  port: 8081
+  servlet:
+    context-path: /
+
+# Management/Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,env
+  endpoint:
+    health:
+      show-details: when-authorized
+
+# Logging Configuration
+logging:
+  level:
+    com.icefaces.modernization: DEBUG
+    org.springframework.web: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+# OpenAPI/Swagger Configuration
+springdoc:
+  api-docs:
+    path: /api/v3/api-docs
+  swagger-ui:
+    path: /api/swagger-ui.html
+    operationsSorter: method
+
+---
+# Development Profile
+spring:
+  config:
+    activate:
+      on-profile: dev
+  
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+      
+# Enable H2 console in development
+  h2:
+    console:
+      enabled: true
+
+logging:
+  level:
+    com.icefaces.modernization: DEBUG
+    root: INFO
+
+---
+# Production Profile
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  # PostgreSQL Configuration (Production)
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/modernization_db}
+    driver-class-name: org.postgresql.Driver
+    username: ${DATABASE_USERNAME:modernization_user}
+    password: ${DATABASE_PASSWORD:modernization_pass}
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  h2:
+    console:
+      enabled: false
+
+# Production logging
+logging:
+  level:
+    com.icefaces.modernization: INFO
+    root: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
