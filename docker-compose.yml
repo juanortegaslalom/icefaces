@@ -1,4 +1,22 @@
+version: "3.8"
+
 services:
+  # Mini Employee Directory Application
+  mini-employee-directory:
+    image: tomcat:8.5-jdk8
+    container_name: icefaces-mini-employee-directory
+    ports:
+      - "8090:8080"
+    volumes:
+      # Map the final WAR file with remove functionality only
+      - ./mini-employee-directory-final.war:/usr/local/tomcat/webapps/mini-employee-directory.war
+    environment:
+      TZ: "America/Vancouver"
+      # Increase memory for Java
+      CATALINA_OPTS: "-Xmx512m -Xms256m"
+    restart: unless-stopped
+
+  # Original ICEfaces build service (kept for reference)
   icefaces-build:
     image: maven:3.8.6-jdk-8
     container_name: icefaces_build
@@ -10,14 +28,16 @@ services:
           -Dmaven.wagon.http.ssl.allowall=true
           -Dmaven.wagon.http.blocked=false
           clean package
+    profiles: ["build"]
 
-
-  icefaces-run:
+  # Original ICEfaces showcase (kept for reference)
+  icefaces-showcase:
     image: tomcat:8.5-jdk8
-    container_name: icefaces_run
+    container_name: icefaces_showcase
     depends_on:
       - icefaces-build
     ports:
-      - "8080:8080"
+      - "8081:8080"
     volumes:
-      - ./samples/showcase/showcase/target/showcase.war:/usr/local/tomcat/webap ps/showcase.war
+      - ./samples/showcase/showcase/target/showcase.war:/usr/local/tomcat/webapps/showcase.war
+    profiles: ["showcase"]
