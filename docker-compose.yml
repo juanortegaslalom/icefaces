@@ -1,15 +1,43 @@
-version: "3.8"
-
 services:
+  # MySQL Database for Employee Directory
+  mysql-db:
+    image: mysql:8.0
+    container_name: icefaces-mysql
+    platform: linux/amd64
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: employeedb
+      MYSQL_USER: iceuser
+      MYSQL_PASSWORD: icepass
+      TZ: "America/Vancouver"
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql:ro
+    networks:
+      - icefaces-network
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
   # Mini Employee Directory Application
   mini-employee-directory:
     image: tomcat:8.5-jdk8
     container_name: icefaces-mini-employee-directory
+    depends_on:
+      mysql-db:
+        condition: service_healthy
     ports:
       - "8090:8080"
     volumes:
-      # Map the final WAR file with remove functionality only
-      - ./mini-employee-directory-final.war:/usr/local/tomcat/webapps/mini-employee-directory.war
+      # Map the final WAR file with MySQL persistence
+      - ./mini-employee-directory-mysql.war:/usr/local/tomcat/webapps/mini-employee-directory.war
+    networks:
+      - icefaces-network
     environment:
       TZ: "America/Vancouver"
       # Increase memory for Java
@@ -41,3 +69,11 @@ services:
     volumes:
       - ./samples/showcase/showcase/target/showcase.war:/usr/local/tomcat/webapps/showcase.war
     profiles: ["showcase"]
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  icefaces-network:
+    driver: bridge

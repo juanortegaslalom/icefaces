@@ -17,71 +17,77 @@
 package org.icefaces.demo.employee.model;
 
 import java.io.Serializable;
+import javax.persistence.*;
 
 /**
  * Employee entity for the Mini Employee Directory demo.
- * Contains basic employee information including id, name, position, department, and email.
+ * JPA entity with MySQL persistence support.
  */
+@Entity
+@Table(name = "employees")
 public class Employee implements Serializable {
     
-    private int id;
-    private String name;
-    private String position;
-    private String department;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+    
+    @Column(name = "first_name", nullable = false, length = 50)
+    private String firstName;
+    
+    @Column(name = "last_name", nullable = false, length = 50)
+    private String lastName;
+    
+    @Column(name = "email", nullable = false, length = 100)
     private String email;
     
-    // Default constructor
+    @Column(name = "department", nullable = false, length = 50)
+    private String department;
+    
+    // Default constructor (required by JPA)
     public Employee() {
     }
     
     // Constructor for creating new employees (without id)
-    public Employee(String name, String position, String department, String email) {
-        this.name = name;
-        this.position = position;
-        this.department = department;
+    public Employee(String firstName, String lastName, String email, String department) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
+        this.department = department;
     }
     
     // Constructor with all fields
-    public Employee(int id, String name, String position, String department, String email) {
+    public Employee(Long id, String firstName, String lastName, String email, String department) {
         this.id = id;
-        this.name = name;
-        this.position = position;
-        this.department = department;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
+        this.department = department;
     }
     
     // Getters and Setters
-    public int getId() {
+    public Long getId() {
         return id;
     }
     
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
     
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
     
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
     
-    public String getPosition() {
-        return position;
+    public String getLastName() {
+        return lastName;
     }
     
-    public void setPosition(String position) {
-        this.position = position;
-    }
-    
-    public String getDepartment() {
-        return department;
-    }
-    
-    public void setDepartment(String department) {
-        this.department = department;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
     
     public String getEmail() {
@@ -92,14 +98,47 @@ public class Employee implements Serializable {
         this.email = email;
     }
     
+    public String getDepartment() {
+        return department;
+    }
+    
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+    
+    // Convenience method to get full name
+    public String getFullName() {
+        return (firstName != null ? firstName : "") + 
+               (lastName != null && !lastName.isEmpty() ? " " + lastName : "");
+    }
+    
+    // Convenience method for backwards compatibility
+    public String getName() {
+        return getFullName();
+    }
+    
     @Override
     public String toString() {
         return "Employee{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", position='" + position + '\'' +
-                ", department='" + department + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
+                ", department='" + department + '\'' +
                 '}';
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        
+        Employee employee = (Employee) o;
+        return id != null ? id.equals(employee.id) : employee.id == null;
+    }
+    
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 }

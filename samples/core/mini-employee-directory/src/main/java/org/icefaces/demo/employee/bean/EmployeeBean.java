@@ -16,14 +16,16 @@
 
 package org.icefaces.demo.employee.bean;
 
+import org.icefaces.demo.employee.dao.EmployeeDAO;
 import org.icefaces.demo.employee.model.Employee;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -31,58 +33,115 @@ import javax.faces.event.ActionEvent;
 
 /**
  * Managed bean for the Mini Employee Directory demo.
- * Handles employee data management and form operations.
+ * Handles employee data management and form operations using MySQL database persistence.
  */
 @ManagedBean(name = "employeeBean")
 @SessionScoped
 public class EmployeeBean implements Serializable {
     
-    private static List<Employee> employees = new ArrayList<Employee>();
-    private static int nextId = 1;
+    private EmployeeDAO employeeDAO;
     
     // Form fields for adding new employees
-    private String newName = "";
-    private String newPosition = "";
-    private String newDepartment = "";
+    private String newFirstName = "";
+    private String newLastName = "";
     private String newEmail = "";
-    
+    private String newDepartment = "";
     
     // Sorting fields
-    private String sortColumn = "name";
+    private String sortColumn = "firstName";
     private boolean sortAscending = true;
     
-    // Initialize with sample data
-    static {
-        employees.add(new Employee(nextId++, "John Smith", "Software Engineer", "IT", "john.smith@company.com"));
-        employees.add(new Employee(nextId++, "Sarah Johnson", "Project Manager", "IT", "sarah.johnson@company.com"));
-        employees.add(new Employee(nextId++, "Michael Brown", "Business Analyst", "Finance", "michael.brown@company.com"));
-        employees.add(new Employee(nextId++, "Emily Davis", "UX Designer", "Design", "emily.davis@company.com"));
-        employees.add(new Employee(nextId++, "Robert Wilson", "DevOps Engineer", "IT", "robert.wilson@company.com"));
-        employees.add(new Employee(nextId++, "Lisa Garcia", "HR Manager", "Human Resources", "lisa.garcia@company.com"));
-        employees.add(new Employee(nextId++, "David Martinez", "Sales Representative", "Sales", "david.martinez@company.com"));
-        employees.add(new Employee(nextId++, "Jennifer Taylor", "Marketing Specialist", "Marketing", "jennifer.taylor@company.com"));
+    // Cache for employees list to avoid repeated database calls
+    private List<Employee> employeesCache;
+    private boolean cacheValid = false;
+    
+    /**
+     * Initialize the bean and setup database connection
+     */
+    @PostConstruct
+    public void init() {
+        try {
+            employeeDAO = new EmployeeDAO();
+            // Initialize sample data if database is empty
+            employeeDAO.initializeSampleData();
+            refreshEmployeeCache();
+        } catch (Exception e) {
+            System.err.println("Error initializing EmployeeBean: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
     
-    public EmployeeBean() {
-        sortEmployees();
+    /**
+     * Cleanup resources when bean is destroyed
+     */
+    @PreDestroy
+    public void cleanup() {
+        if (employeeDAO != null) {
+            employeeDAO.close();
+        }
+    }
+    
+    /**
+     * Refresh the employee cache from database
+     */
+    private void refreshEmployeeCache() {
+        try {
+            employeesCache = employeeDAO.findAllEmployees();
+            if (employeesCache != null) {
+                sortEmployees();
+                cacheValid = true;
+            }
+        } catch (Exception e) {
+            System.err.println("Error refreshing employee cache: " + e.getMessage());
+            e.printStackTrace();
+            cacheValid = false;
+        }
     }
     
     /**
      * Get the list of employees
      */
     public List<Employee> getEmployees() {
-        return employees;
+        if (!cacheValid || employeesCache == null) {
+            refreshEmployeeCache();
+        }
+        return employeesCache;
     }
     
     /**
      * Add a new employee
      */
     public void addEmployee(ActionEvent event) {
-        if (isValidEmployee()) {
-            Employee newEmployee = new Employee(nextId++, newName.trim(), newPosition.trim(), newDepartment.trim(), newEmail.trim());
-            employees.add(newEmployee);
-            clearForm();
-            sortEmployees();
+        try {
+            if (isValidEmployee()) {
+                Employee newEmployee = new Employee(
+                    newFirstName.trim(), 
+                    newLastName.trim(), 
+                    newEmail.trim(), 
+                    newDepartment.trim()
+                );
+                
+                Employee saved = employeeDAO.saveEmployee(newEmployee);
+                if (saved != null) {
+                    clearForm();
+                    refreshEmployeeCache();
+                    
+                    // Add success message
+                    FacesContext.getCurrentInstance().addMessage(null, 
+                        new javax.faces.application.FacesMessage(
+                            javax.faces.application.FacesMessage.SEVERITY_INFO,
+                            "Success", "Employee added successfully!"));
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Error adding employee: " + e.getMessage());
+            e.printStackTrace();
+            
+            // Add error message
+            FacesContext.getCurrentInstance().addMessage(null, 
+                new javax.faces.application.FacesMessage(
+                    javax.faces.application.FacesMessage.SEVERITY_ERROR,
+                    "Error", "Failed to add employee. Please try again."));
         }
     }
     
@@ -90,20 +149,20 @@ public class EmployeeBean implements Serializable {
      * Clear the form fields
      */
     public void clearForm() {
-        newName = "";
-        newPosition = "";
-        newDepartment = "";
+        newFirstName = "";
+        newLastName = "";
         newEmail = "";
+        newDepartment = "";
     }
     
     /**
      * Validate form input
      */
     private boolean isValidEmployee() {
-        return newName != null && !newName.trim().isEmpty() &&
-               newPosition != null && !newPosition.trim().isEmpty() &&
-               newDepartment != null && !newDepartment.trim().isEmpty() &&
-               newEmail != null && !newEmail.trim().isEmpty();
+        return newFirstName != null && !newFirstName.trim().isEmpty() &&
+               newLastName != null && !newLastName.trim().isEmpty() &&
+               newEmail != null && !newEmail.trim().isEmpty() &&
+               newDepartment != null && !newDepartment.trim().isEmpty();
     }
     
     /**
@@ -123,13 +182,15 @@ public class EmployeeBean implements Serializable {
      * Sort the employee list
      */
     private void sortEmployees() {
-        Collections.sort(employees, new Comparator<Employee>() {
+        if (employeesCache == null) return;
+        
+        Collections.sort(employeesCache, new Comparator<Employee>() {
             public int compare(Employee e1, Employee e2) {
                 int result = 0;
-                if ("name".equals(sortColumn)) {
-                    result = e1.getName().compareToIgnoreCase(e2.getName());
-                } else if ("position".equals(sortColumn)) {
-                    result = e1.getPosition().compareToIgnoreCase(e2.getPosition());
+                if ("firstName".equals(sortColumn) || "name".equals(sortColumn)) {
+                    result = e1.getFirstName().compareToIgnoreCase(e2.getFirstName());
+                } else if ("lastName".equals(sortColumn)) {
+                    result = e1.getLastName().compareToIgnoreCase(e2.getLastName());
                 } else if ("department".equals(sortColumn)) {
                     result = e1.getDepartment().compareToIgnoreCase(e2.getDepartment());
                 } else if ("email".equals(sortColumn)) {
@@ -144,7 +205,9 @@ public class EmployeeBean implements Serializable {
      * Get the sort indicator for the specified column
      */
     public String getSortIndicator(String column) {
-        if (column.equals(sortColumn)) {
+        // Handle both "name" and "firstName" for backward compatibility
+        if ((column.equals("name") && sortColumn.equals("firstName")) || 
+            column.equals(sortColumn)) {
             return sortAscending ? " ↑" : " ↓";
         }
         return "";
@@ -154,11 +217,12 @@ public class EmployeeBean implements Serializable {
      * Action listener for column sorting
      */
     public void sortByName(ActionEvent event) {
-        sortByColumn("name");
+        sortByColumn("firstName");
     }
     
     public void sortByPosition(ActionEvent event) {
-        sortByColumn("position");
+        // For backward compatibility, map position to department
+        sortByColumn("department");
     }
     
     public void sortByDepartment(ActionEvent event) {
@@ -170,11 +234,34 @@ public class EmployeeBean implements Serializable {
     }
     
     /**
-     * Remove an employee from the list
+     * Remove an employee from the database
      */
     public String removeEmployee(Employee employee) {
-        if (employee != null) {
-            employees.remove(employee);
+        try {
+            if (employee != null && employeeDAO.deleteEmployee(employee)) {
+                refreshEmployeeCache();
+                
+                // Add success message
+                FacesContext.getCurrentInstance().addMessage(null, 
+                    new javax.faces.application.FacesMessage(
+                        javax.faces.application.FacesMessage.SEVERITY_INFO,
+                        "Success", "Employee removed successfully!"));
+            } else {
+                // Add error message
+                FacesContext.getCurrentInstance().addMessage(null, 
+                    new javax.faces.application.FacesMessage(
+                        javax.faces.application.FacesMessage.SEVERITY_ERROR,
+                        "Error", "Failed to remove employee."));
+            }
+        } catch (Exception e) {
+            System.err.println("Error removing employee: " + e.getMessage());
+            e.printStackTrace();
+            
+            // Add error message
+            FacesContext.getCurrentInstance().addMessage(null, 
+                new javax.faces.application.FacesMessage(
+                    javax.faces.application.FacesMessage.SEVERITY_ERROR,
+                    "Error", "Failed to remove employee. Please try again."));
         }
         return null; // Stay on same page
     }
@@ -187,39 +274,40 @@ public class EmployeeBean implements Serializable {
             .getRequestParameterMap().get("employeeId");
         if (idParam != null) {
             try {
-                int id = Integer.parseInt(idParam);
-                Employee toRemove = null;
-                for (Employee emp : employees) {
-                    if (emp.getId() == id) {
-                        toRemove = emp;
-                        break;
-                    }
-                }
-                if (toRemove != null) {
-                    removeEmployee(toRemove);
+                Long id = Long.parseLong(idParam);
+                Employee employee = employeeDAO.findById(id);
+                if (employee != null) {
+                    removeEmployee(employee);
                 }
             } catch (NumberFormatException e) {
-                // Handle invalid ID
+                System.err.println("Invalid employee ID: " + idParam);
             }
         }
     }
     
-    
     // Getters and setters for form fields
-    public String getNewName() {
-        return newName;
+    public String getNewFirstName() {
+        return newFirstName;
     }
     
-    public void setNewName(String newName) {
-        this.newName = newName;
+    public void setNewFirstName(String newFirstName) {
+        this.newFirstName = newFirstName;
     }
     
-    public String getNewPosition() {
-        return newPosition;
+    public String getNewLastName() {
+        return newLastName;
     }
     
-    public void setNewPosition(String newPosition) {
-        this.newPosition = newPosition;
+    public void setNewLastName(String newLastName) {
+        this.newLastName = newLastName;
+    }
+    
+    public String getNewEmail() {
+        return newEmail;
+    }
+    
+    public void setNewEmail(String newEmail) {
+        this.newEmail = newEmail;
     }
     
     public String getNewDepartment() {
@@ -230,12 +318,25 @@ public class EmployeeBean implements Serializable {
         this.newDepartment = newDepartment;
     }
     
-    public String getNewEmail() {
-        return newEmail;
+    // Backward compatibility getters/setters for existing form
+    public String getNewName() {
+        return newFirstName + (newLastName.isEmpty() ? "" : " " + newLastName);
     }
     
-    public void setNewEmail(String newEmail) {
-        this.newEmail = newEmail;
+    public void setNewName(String newName) {
+        if (newName != null && !newName.trim().isEmpty()) {
+            String[] parts = newName.trim().split("\\s+", 2);
+            this.newFirstName = parts[0];
+            this.newLastName = parts.length > 1 ? parts[1] : "";
+        }
+    }
+    
+    public String getNewPosition() {
+        return newDepartment; // Map position to department for backward compatibility
+    }
+    
+    public void setNewPosition(String newPosition) {
+        this.newDepartment = newPosition;
     }
     
     public String getSortColumn() {
@@ -247,6 +348,7 @@ public class EmployeeBean implements Serializable {
     }
     
     public int getEmployeeCount() {
-        return employees.size();
+        List<Employee> employees = getEmployees();
+        return employees != null ? employees.size() : 0;
     }
 }
