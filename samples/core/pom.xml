@@ -33,6 +33,7 @@
         <module>auction</module>
         <module>chat</module>
         <module>chat-portlet</module>
+        <module>mini-employee-directory</module>
     </modules>
 
     <dependencies>

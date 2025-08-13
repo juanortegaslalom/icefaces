@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<taglib xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
-<display-name>ICEfaces ACE Components</display-name>
-<tlib-version>3.4.0</tlib-version>
-<short-name>ace</short-name>
-<uri>http://www.icefaces.org/icefaces/components</uri>
-</taglib>

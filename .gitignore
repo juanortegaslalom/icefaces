@@ -1,0 +1,28 @@
+# Maven build artifacts
+target/
+*.war
+*.jar
+*.class
+
+# IDE files
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node modules (if any)
+node_modules/
+
+# Logs
+*.log
+
+# Temp files
+*.tmp
+*.temp
