@@ -1,4 +1,4 @@
--- Database initialization script for ICEfaces Mini Employee Directory
+-- Database initialization script for ICEfaces Employee Directory
 -- This script creates the employees table with proper schema
 
 USE employeedb;

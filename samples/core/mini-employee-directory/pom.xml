@@ -25,8 +25,8 @@
     <artifactId>mini-employee-directory</artifactId>
     <version>3.3.0</version>
     <packaging>war</packaging>
-    <name>ICEfaces Mini Employee Directory</name>
-    <description>ICEfaces legacy demo showing employee management with ice:dataTable</description>
+    <name>ICEfaces Employee Directory</name>
+    <description>ICEfaces demo showing employee management with ice:dataTable</description>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>

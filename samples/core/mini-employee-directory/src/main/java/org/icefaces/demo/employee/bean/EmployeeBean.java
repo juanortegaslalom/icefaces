@@ -32,7 +32,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 /**
- * Managed bean for the Mini Employee Directory demo.
+ * Managed bean for the Employee Directory demo.
  * Handles employee data management and form operations using MySQL database persistence.
  */
 @ManagedBean(name = "employeeBean")

@@ -20,7 +20,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 /**
- * Employee entity for the Mini Employee Directory demo.
+ * Employee entity for the Employee Directory demo.
  * JPA entity with MySQL persistence support.
  */
 @Entity

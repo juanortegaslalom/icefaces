@@ -21,10 +21,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-    <display-name>Mini Employee Directory</display-name>
+    <display-name>Employee Directory</display-name>
 
     <description>
-        ICEfaces Mini Employee Directory Demo - A simple employee management system
+        ICEfaces  Employee Directory  - A simple employee management system
         demonstrating standard JSF h:dataTable with ICEfaces core features.
     </description>
 
