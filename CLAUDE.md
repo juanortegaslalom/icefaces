@@ -66,7 +66,7 @@ ant world
 
 # Build individual modules
 cd core && mvn clean install
-cd ace && mvn clean install
+c2d ace && mvn clean install
 cd compat && mvn clean install
 ```
 

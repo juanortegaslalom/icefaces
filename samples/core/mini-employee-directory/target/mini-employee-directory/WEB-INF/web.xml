@@ -24,7 +24,7 @@
     <display-name>Employee Directory</display-name>
 
     <description>
-        ICEfaces Employee Directory Demo - A simple employee management system
+        ICEfaces Employee Directory - A simple employee management system
         demonstrating standard JSF h:dataTable with ICEfaces core features.
     </description>
 
