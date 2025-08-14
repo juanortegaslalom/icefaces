@@ -9,7 +9,7 @@ This is ICEfaces 3.4.0, a Java-based JSF (JavaServer Faces) framework for buildi
 ## Build System
 
 ### Maven (Primary Build System)
-- **Root POM**: `pom.xml` - Main parent POM with version 3.3.0 (note: some modules use 3.4.0-SNAPSHOT)
+- **Root POM**: `pom.xml` - Main parent POM with version 3.3.0
 - **Build Command**: `mvn clean install`
 - **Module Structure**: Multi-module Maven project with modules: core, ace, compat, samples
 - **Java Version**: Targets Java 1.5 (legacy project)
@@ -18,89 +18,51 @@ This is ICEfaces 3.4.0, a Java-based JSF (JavaServer Faces) framework for buildi
 - **Root Build**: `build.xml` - Main Ant build file
 - **Build Command**: `ant world` (builds all components)
 - **Clean Command**: `ant allclean`
-- **Individual Components**: `ant core`, `ant ace`, `ant compat`, `ant samples`
 
-## Project Architecture
+## Mini Employee Directory Sample
 
-### Core Modules
-
-1. **core/** - ICEfaces core framework
-   - Main JSF integration and DOM-based partial rendering
-   - Push functionality (via ICEpush when available) 
-   - Window scoping and session management
-   - Source: `core/src/main/java/org/icefaces/`
-
-2. **ace/** - Advanced Component Environment
-   - Modern jQuery UI-based components (DataTable, Chart, etc.)
-   - Theme support with jQuery ThemeRoller integration
-   - Component generators and build tools
-   - Source: `ace/component/src/org/icefaces/ace/component/`
-
-3. **compat/** - Backwards Compatibility 
-   - ICEfaces 1.x compatibility layer
-   - Legacy ICE Components 
-   - Migration support for existing applications
-   - Source: `compat/components/src/main/java/`
-
-4. **samples/** - Example Applications
-   - **showcase/** - Main demo application showing all components
-   - **core/** - Basic core framework examples (auction, chat)
-   - **compat/** - Legacy component examples
-   - Build individual samples: `mvn clean install` in sample directory
-
-### Key Dependencies
-- JSF Implementation: Mojarra 2.1.26 (configurable to MyFaces)
-- Servlet API: 3.0.1
-- Portlet support via Liferay Faces Bridge or PortletFaces Bridge
-- jQuery and jQuery UI for ACE components
-
-## Development Workflow
-
-### Building the Framework
-```bash
-# Build everything (Maven)
-mvn clean install
-
-# Build everything (Ant)  
-ant world
-
-# Build individual modules
-cd core && mvn clean install
-c2d ace && mvn clean install
-cd compat && mvn clean install
+The main sample application is located at:
+```
+samples/core/mini-employee-directory/
 ```
 
-### Running Examples
+### Running the Employee Directory
+
+1. Build the project:
 ```bash
-# Build and run showcase sample
-cd samples/showcase/showcase
-mvn clean install
-# Deploy the generated WAR to servlet container
+cd samples/core/mini-employee-directory
+mvn clean package
 ```
 
-### Working with Components
+2. Deploy the WAR file to a servlet container (Tomcat 8.5):
+```bash
+cp target/mini-employee-directory.war $TOMCAT_HOME/webapps/
+```
 
-**ACE Components** (`ace/component/src/org/icefaces/ace/component/`):
-- Each component has: Component class, Meta class, Renderer class
-- Resources in `ace/component/resources/icefaces.ace/[component-name]/`
-- JavaScript and CSS assets are automatically processed
+3. Access the application:
+```
+http://localhost:8080/mini-employee-directory/employeeDirectory.jsf
+```
 
-**ICE Components** (`compat/components/`):
-- Legacy 1.x style components for backward compatibility
-- TLD generation and documentation
+### Using Docker
 
-## Important Paths
+Run the complete application with MySQL:
+```bash
+docker-compose up mini-employee-directory
+```
 
-- **Libraries**: `lib/` - Contains all runtime JARs after build
-- **Documentation**: Generated in `docs/` during bundle creation
-- **Themes**: `ace/themes/` - jQuery ThemeRoller theme JARs
-- **JavaScript**: `core/src/main/javascript/` - Core ICEfaces JS
-- **CSS Tools**: `ace/tools/cssurlmapper/` - CSS URL processing utility
+Access at: http://localhost:8090/mini-employee-directory/employeeDirectory.jsf
 
-## Development Notes
+## Project Structure
 
-- This is a **legacy framework** (ICEfaces 3.x) marked as ABANDONED in build.properties
-- Uses older Java/JSF versions - be mindful when suggesting modern alternatives  
-- Build system supports both servlet containers (Tomcat) and portal containers
-- Heavy use of code generation for component metadata and renderers
-- Resources are coalesceable for performance optimization
+```
+icefaces/
+├── core/                    # ICEfaces core framework
+├── ace/                     # Advanced Component Environment
+├── compat/                  # Backwards compatibility
+├── samples/                 # Sample applications
+│   └── core/
+│       └── mini-employee-directory/  # Employee management sample
+├── lib/                     # Runtime libraries
+└── docker-compose.yml       # Docker configuration
+```

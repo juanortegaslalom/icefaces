@@ -24,7 +24,7 @@ services:
       timeout: 20s
       retries: 10
 
-  # Mini Employee Directory Application
+  # Mini Employee Directory Application (Legacy ICEfaces)
   mini-employee-directory:
     image: tomcat:8.5-jdk8
     container_name: icefaces-mini-employee-directory
@@ -34,41 +34,14 @@ services:
     ports:
       - "8090:8080"
     volumes:
-      # Map the final WAR file with MySQL persistence
-      - ./mini-employee-directory-mysql.war:/usr/local/tomcat/webapps/mini-employee-directory.war
+      # Build the WAR first with: cd samples/core/mini-employee-directory && mvn clean package
+      - ./samples/core/mini-employee-directory/target/mini-employee-directory.war:/usr/local/tomcat/webapps/mini-employee-directory.war
     networks:
       - icefaces-network
     environment:
       TZ: "America/Vancouver"
-      # Increase memory for Java
       CATALINA_OPTS: "-Xmx512m -Xms256m"
     restart: unless-stopped
-
-  # Original ICEfaces build service (kept for reference)
-  icefaces-build:
-    image: maven:3.8.6-jdk-8
-    container_name: icefaces_build
-    working_dir: /app
-    volumes:
-      - .:/app
-    command: >
-      mvn -Dmaven.wagon.http.ssl.insecure=true
-          -Dmaven.wagon.http.ssl.allowall=true
-          -Dmaven.wagon.http.blocked=false
-          clean package
-    profiles: ["build"]
-
-  # Original ICEfaces showcase (kept for reference)
-  icefaces-showcase:
-    image: tomcat:8.5-jdk8
-    container_name: icefaces_showcase
-    depends_on:
-      - icefaces-build
-    ports:
-      - "8081:8080"
-    volumes:
-      - ./samples/showcase/showcase/target/showcase.war:/usr/local/tomcat/webapps/showcase.war
-    profiles: ["showcase"]
 
 volumes:
   mysql_data:
