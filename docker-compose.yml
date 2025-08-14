@@ -35,7 +35,7 @@ services:
       - "8090:8080"
     volumes:
       # Build the WAR first with: cd samples/core/mini-employee-directory && mvn clean package
-      - ./samples/core/mini-employee-directory/target/mini-employee-directory.war:/usr/local/tomcat/webapps/mini-employee-directory.war
+      - ./samples/core/mini-employee-directory/target/mini-employee-directory-mysql.war:/usr/local/tomcat/webapps/mini-employee-directory.war
     networks:
       - icefaces-network
     environment:
