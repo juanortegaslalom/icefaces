@@ -1,0 +1,97 @@
+<div class="employee-directory">
+  <header class="header">
+    <h1>Employee Directory</h1>
+  </header>
+
+  <div class="content">
+    <div class="form-section">
+      <h2>Add New Employee</h2>
+      <form (ngSubmit)="addEmployee()" class="employee-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input 
+              id="firstName"
+              type="text" 
+              [(ngModel)]="newEmployee.first_name"
+              name="firstName"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input 
+              id="lastName"
+              type="text" 
+              [(ngModel)]="newEmployee.last_name"
+              name="lastName"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="department">Department:</label>
+            <input 
+              id="department"
+              type="text" 
+              [(ngModel)]="newEmployee.department"
+              name="department"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input 
+              id="email"
+              type="email" 
+              [(ngModel)]="newEmployee.email"
+              name="email"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" [disabled]="isLoading">Add Employee</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="table-section">
+      <h2>Employee List</h2>
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+      <div *ngIf="isLoading" class="loading">Loading...</div>
+      <table *ngIf="!isLoading" class="employee-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employees">
+            <td>{{ employee.firstName }} {{ employee.lastName }}</td>
+            <td>{{ employee.department }}</td>
+            <td>{{ employee.email }}</td>
+            <td>
+              <button 
+                class="delete-btn" 
+                (click)="deleteEmployee(employee.id!)"
+                title="Delete Employee"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="employees.length === 0">
+            <td colspan="4" class="no-data">No employees found</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
