@@ -61,15 +61,38 @@ public class StaffDirectoryBean implements Serializable {
      * Toggle expansion of an organizational unit
      */
     public void toggleExpansion(OrganizationalUnit unit) {
-        unit.setExpanded(!unit.isExpanded());
+        if (unit != null) {
+            unit.setExpanded(!unit.isExpanded());
+            System.out.println("DEBUG: Toggled expansion for " + unit.getName() + " to " + unit.isExpanded());
+        } else {
+            System.err.println("ERROR: toggleExpansion called with null unit");
+        }
     }
     
     /**
      * Select an organizational unit to view details
      */
     public void selectUnit(OrganizationalUnit unit) {
-        this.selectedUnit = unit;
-        this.currentView = "contacts";
+        if (unit != null) {
+            this.selectedUnit = unit;
+            this.currentView = "contacts";
+            System.out.println("DEBUG: Selected unit: " + unit.getName());
+        } else {
+            System.err.println("ERROR: selectUnit called with null unit");
+        }
+    }
+    
+    /**
+     * Select a deputy minister office to view its contacts
+     */
+    public void selectDeputyMinisterOffice(OrganizationalUnit office) {
+        if (office != null) {
+            this.selectedUnit = office;
+            this.currentView = "contacts";
+            System.out.println("DEBUG: Selected deputy minister office: " + office.getName());
+        } else {
+            System.err.println("ERROR: selectDeputyMinisterOffice called with null office");
+        }
     }
     
     /**
@@ -83,9 +106,14 @@ public class StaffDirectoryBean implements Serializable {
     /**
      * Navigate to main view
      */
-    public void showMainView() {
+    public String showMainView() {
+        System.out.println("DEBUG: showMainView called, switching to main view");
         this.currentView = "main";
         this.selectedUnit = null;
+        this.searchTerm = ""; // Clear search term when going back to main
+        this.searchResults = null; // Clear search results
+        System.out.println("DEBUG: Current view is now: " + this.currentView);
+        return null;
     }
     
     /**
@@ -102,10 +130,8 @@ public class StaffDirectoryBean implements Serializable {
             searchResults = dao.searchContacts(searchTerm.trim());
             System.out.println("Found " + searchResults.size() + " search results");
             
-            // Switch to search results view if we have results
-            if (!searchResults.isEmpty()) {
-                currentView = "search";
-            }
+            // Always switch to search results view after search
+            currentView = "search";
             
         } catch (Exception e) {
             System.err.println("Error performing search: " + e.getMessage());
@@ -185,6 +211,33 @@ public class StaffDirectoryBean implements Serializable {
         return "search".equals(currentView);
     }
     
+    public boolean getSearchView() {
+        return isSearchView();
+    }
+    
+    public boolean isDeputyMinisterListView() {
+        return "deputyMinisterList".equals(currentView);
+    }
+    
+    public boolean getDeputyMinisterListView() {
+        return isDeputyMinisterListView();
+    }
+    
+    public boolean isSpokespersonListView() {
+        return "spokespersonList".equals(currentView);
+    }
+    
+    public boolean getSpokespersonListView() {
+        return isSpokespersonListView();
+    }
+    
+    /**
+     * Navigate back to spokesperson list from department view
+     */
+    public void backToSpokespersonList() {
+        showSpokespersonContacts();
+    }
+    
     public List<Contact> getSearchResults() {
         return searchResults;
     }
@@ -196,4 +249,193 @@ public class StaffDirectoryBean implements Serializable {
     public boolean hasSearchResults() {
         return searchResults != null && !searchResults.isEmpty();
     }
+    
+    public boolean getHasSearchResults() {
+        return hasSearchResults();
+    }
+    
+    /**
+     * Navigate to Contact a Minister section
+     */
+    public void showContactMinister() {
+        this.currentView = "contacts";
+        
+        // Find Executive Branch ministry and Members of Executive Council unit
+        for (OrganizationalUnit ministry : ministries) {
+            if ("Executive Branch".equals(ministry.getName())) {
+                for (OrganizationalUnit unit : ministry.getChildren()) {
+                    if ("Members of Executive Council".equals(unit.getName())) {
+                        this.selectedUnit = unit;
+                        return;
+                    }
+                }
+                // If no specific unit found, select the ministry itself
+                this.selectedUnit = ministry;
+                return;
+            }
+        }
+    }
+    
+    /**
+     * Navigate to Contact a Deputy Minister section
+     */
+    public void showContactDeputyMinister() {
+        this.currentView = "deputyMinisterList";
+        
+        // Find Deputy Ministers ministry to show list of offices
+        for (OrganizationalUnit ministry : ministries) {
+            if ("Deputy Ministers".equals(ministry.getName())) {
+                this.selectedUnit = ministry;
+                return;
+            }
+        }
+    }
+    
+    /**
+     * Navigate to Spokesperson contacts section
+     */
+    public void showSpokespersonContacts() {
+        this.currentView = "spokespersonList";
+        
+        // Find Spokesperson Contacts ministry to show list of departments
+        for (OrganizationalUnit ministry : ministries) {
+            if ("Spokesperson Contacts".equals(ministry.getName())) {
+                this.selectedUnit = ministry;
+                return;
+            }
+        }
+    }
+    
+    /**
+     * Select a spokesperson department to view its contacts
+     */
+    public void selectSpokespersonDepartment(OrganizationalUnit department) {
+        if (department != null) {
+            this.selectedUnit = department;
+            this.currentView = "contacts";
+            System.out.println("DEBUG: Selected spokesperson department: " + department.getName());
+        } else {
+            System.err.println("ERROR: selectSpokespersonDepartment called with null department");
+        }
+    }
+    
+    /**
+     * Navigate to Administrative departments section
+     */
+    public void showAdministrativeDepartments() {
+        this.currentView = "contacts";
+        
+        // Find Administrative Services ministry and create a combined view
+        for (OrganizationalUnit ministry : ministries) {
+            if ("Administrative Services".equals(ministry.getName())) {
+                // Create a synthetic unit that combines all child contacts
+                OrganizationalUnit combinedUnit = new OrganizationalUnit("Administrative Services", "ministry");
+                
+                // Add all contacts from all child departments
+                for (OrganizationalUnit department : ministry.getChildren()) {
+                    if (department.getContacts() != null) {
+                        for (Contact contact : department.getContacts()) {
+                            combinedUnit.addContact(contact);
+                        }
+                    }
+                }
+                
+                this.selectedUnit = combinedUnit;
+                return;
+            }
+        }
+    }
+    
+    /**
+     * Check if current view is showing minister contacts
+     */
+    public boolean isMinisterContactsView() {
+        return isContactsView() && selectedUnit != null && 
+               (selectedUnit.getName().contains("Executive Council") ||
+                (selectedUnit.getName().equals("Executive Branch")));
+    }
+    
+    /**
+     * Check if current view is showing deputy minister contacts
+     */
+    public boolean isDeputyMinisterContactsView() {
+        return isContactsView() && selectedUnit != null && 
+               (selectedUnit.getName().contains("Deputy Minister") ||
+                selectedUnit.getName().contains("Office of"));
+    }
+    
+    /**
+     * Navigate back to deputy minister list from office view
+     */
+    public void backToDeputyMinisterList() {
+        showContactDeputyMinister();
+    }
+    
+    /**
+     * Check if current view is showing spokesperson contacts
+     */
+    public boolean isSpokespersonContactsView() {
+        return isContactsView() && selectedUnit != null && 
+               selectedUnit.getName().contains("Spokesperson Contacts");
+    }
+    
+    /**
+     * Check if current view is showing administrative departments
+     */
+    public boolean isAdministrativeContactsView() {
+        return isContactsView() && selectedUnit != null && 
+               selectedUnit.getName().contains("Administrative Services");
+    }
+    
+    /**
+     * Check if current view is the main view (getter method for EL)
+     */
+    public boolean getShowMainView() {
+        return isMainView();
+    }
+    
+    /**
+     * Getter method for showOrganizationalView action (workaround for JSF EL evaluation)
+     */
+    public String getShowOrganizationalView() {
+        return null; // This is just to satisfy EL evaluation, actual action method exists
+    }
+    
+    /**
+     * Getter method for search action (workaround for JSF EL evaluation)
+     */
+    public String getSearch() {
+        return null; // This is just to satisfy EL evaluation, actual action method exists
+    }
+    
+    /**
+     * Getter method for showContactMinister action (workaround for JSF EL evaluation)
+     */
+    public String getShowContactMinister() {
+        return null;
+    }
+    
+    /**
+     * Getter method for showContactDeputyMinister action (workaround for JSF EL evaluation)
+     */
+    public String getShowContactDeputyMinister() {
+        return null;
+    }
+    
+    /**
+     * Getter method for showSpokespersonContacts action (workaround for JSF EL evaluation)
+     */
+    public String getShowSpokespersonContacts() {
+        return null;
+    }
+    
+    /**
+     * Getter method for showAdministrativeDepartments action (workaround for JSF EL evaluation)
+     */
+    public String getShowAdministrativeDepartments() {
+        return null;
+    }
+    
+    
+    
 }
