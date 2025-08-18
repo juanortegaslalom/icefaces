@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ice="http://www.icesoft.com/icefaces/component"
+      xmlns:ace="http://www.icefaces.org/icefaces/components">
+
+<h:head>
+    <title>Government Staff Directory - Alberta</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <h:outputStylesheet library="css" name="alberta-style.css"/>
+</h:head>
+
+<h:body>
+    <div class="alberta-header">
+        <div class="container">
+            <div class="logo">Alberta</div>
+            <div class="title">Government staff directory</div>
+            <div class="subtitle">Find contact information for Government of Alberta staff and departments.</div>
+        </div>
+    </div>
+
+    <div class="nav-breadcrumb">
+        <div class="container">
+            <h:form>
+                <h:commandLink value="← Contact government" 
+                              action="#{staffDirectoryBean.showMainView}"
+                              rendered="#{not staffDirectoryBean.mainView}"/>
+            </h:form>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="main-content">
+            
+            <!-- Main View -->
+            <h:panelGroup rendered="#{staffDirectoryBean.mainView}">
+                <h:form>
+                    <!-- Navigation Links -->
+                    <div class="nav-links">
+                        <h:commandLink styleClass="nav-link"
+                                      value="► Administrative contact list"
+                                      action="#{staffDirectoryBean.showOrganizationalView}"/>
+                        
+                        <a href="#" class="nav-link">► Change your staff directory information</a>
+                        
+                        <a href="#" class="nav-link">► Request a change to the staff directory</a>
+                    </div>
+                </h:form>
+
+                <!-- Search Section -->
+                <div class="search-section">
+                    <h2>Find staff or a department</h2>
+                    <p>The staff directory shows names and telephone numbers only. This helps ensure the safety of 
+                       all Alberta Public Service employees and protect Government of Alberta assets from 
+                       cyberattacks. You may also contact <strong>310-0000</strong> to be connected to a department.</p>
+                    
+                    <p><strong>Search by name, title, ministry or keyword.</strong></p>
+                    
+                    <h:form>
+                        <div class="search-box">
+                            <h:inputText value="#{staffDirectoryBean.searchTerm}" 
+                                        styleClass="search-input"
+                                        placeholder="Search by name, title, ministry or keyword"/>
+                            <h:commandButton value="Search" 
+                                           styleClass="search-button"
+                                           action="#{staffDirectoryBean.search}"/>
+                        </div>
+                    </h:form>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="mt-20">
+                    <h3>Quick access</h3>
+                    <h:form>
+                        <div class="nav-links">
+                            <h:commandLink styleClass="nav-link"
+                                          value="► Organizational view"
+                                          action="#{staffDirectoryBean.showOrganizationalView}"/>
+                            
+                            <a href="#" class="nav-link">► Legislative Branch PDF</a>
+                            
+                            <a href="#" class="nav-link">► Contact your MLA</a>
+                            
+                            <a href="#" class="nav-link">► Contact a Minister</a>
+                            
+                            <a href="#" class="nav-link">► Contact a Deputy Minister</a>
+                            
+                            <a href="#" class="nav-link">► Spokesperson contacts</a>
+                        </div>
+                    </h:form>
+                </div>
+
+            </h:panelGroup>
+
+            <!-- Organizational View -->
+            <h:panelGroup rendered="#{staffDirectoryBean.organizationalView}">
+                <h:form>
+                    <div class="action-buttons">
+                        <h:commandButton value="← Back to Main" 
+                                       styleClass="btn btn-secondary"
+                                       action="#{staffDirectoryBean.showMainView}"/>
+                    </div>
+
+                    <h2>Organizational Units</h2>
+                    
+                    <!-- Search within org view -->
+                    <div class="search-box mb-20">
+                        <h:inputText value="#{staffDirectoryBean.searchTerm}" 
+                                    styleClass="search-input"
+                                    placeholder="Search for organizational units..."/>
+                        <h:commandButton value="Search" 
+                                       styleClass="search-button"
+                                       action="#{staffDirectoryBean.search}"/>
+                    </div>
+
+                    <!-- Expand/Collapse All -->
+                    <div class="action-buttons">
+                        <h:commandButton value="+ Expand All" styleClass="btn btn-primary"/>
+                        <h:commandButton value="- Collapse All" styleClass="btn btn-secondary"/>
+                    </div>
+
+                    <!-- Ministry Tree -->
+                    <div class="org-tree">
+                        <h:dataTable value="#{staffDirectoryBean.ministries}" var="ministry" 
+                                    styleClass="org-units-table" headerClass="hidden">
+                            <h:column>
+                                <div class="org-unit ministry">
+                                    <div class="org-unit-header">
+                                        <h:commandLink action="#{staffDirectoryBean.toggleExpansion(ministry)}"
+                                                      rendered="#{ministry.hasChildren}">
+                                            <span class="expand-icon">
+                                                #{ministry.expanded ? '−' : '+'}
+                                            </span>
+                                        </h:commandLink>
+                                        <span class="expand-icon" 
+                                              rendered="#{not ministry.hasChildren}">●</span>
+                                        <h:commandLink action="#{staffDirectoryBean.selectUnit(ministry)}">
+                                            <span class="org-unit-name">#{ministry.name}</span>
+                                        </h:commandLink>
+                                        <span class="contact-count">#{ministry.totalContacts} contacts</span>
+                                    </div>
+                                    
+                                    <!-- Children (Departments/Divisions) -->
+                                    <h:panelGroup rendered="#{ministry.expanded and ministry.hasChildren}">
+                                        <div class="org-unit-children">
+                                            <h:dataTable value="#{ministry.children}" var="division" 
+                                                        styleClass="child-units-table" headerClass="hidden">
+                                                <h:column>
+                                                    <div class="org-unit division">
+                                                        <div class="org-unit-header">
+                                                            <h:commandLink action="#{staffDirectoryBean.toggleExpansion(division)}"
+                                                                          rendered="#{division.hasChildren}">
+                                                                <span class="expand-icon">
+                                                                    #{division.expanded ? '−' : '+'}
+                                                                </span>
+                                                            </h:commandLink>
+                                                            <span class="expand-icon" 
+                                                                  rendered="#{not division.hasChildren}">●</span>
+                                                            <h:commandLink action="#{staffDirectoryBean.selectUnit(division)}">
+                                                                <span class="org-unit-name">#{division.name}</span>
+                                                            </h:commandLink>
+                                                            <span class="contact-count">#{division.totalContacts} contacts</span>
+                                                        </div>
+                                                        
+                                                        <!-- Sub-children (Branches/Offices) -->
+                                                        <h:panelGroup rendered="#{division.expanded and division.hasChildren}">
+                                                            <div class="org-unit-children">
+                                                                <h:dataTable value="#{division.children}" var="branch" 
+                                                                            styleClass="child-units-table" headerClass="hidden">
+                                                                    <h:column>
+                                                                        <div class="org-unit branch">
+                                                                            <div class="org-unit-header">
+                                                                                <span class="expand-icon">●</span>
+                                                                                <h:commandLink action="#{staffDirectoryBean.selectUnit(branch)}">
+                                                                                    <span class="org-unit-name">#{branch.name}</span>
+                                                                                </h:commandLink>
+                                                                                <span class="contact-count">#{branch.totalContacts} contacts</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </h:column>
+                                                                </h:dataTable>
+                                                            </div>
+                                                        </h:panelGroup>
+                                                    </div>
+                                                </h:column>
+                                            </h:dataTable>
+                                        </div>
+                                    </h:panelGroup>
+                                </div>
+                            </h:column>
+                        </h:dataTable>
+                    </div>
+
+                </h:form>
+            </h:panelGroup>
+
+            <!-- Contact Details View -->
+            <h:panelGroup rendered="#{staffDirectoryBean.contactsView}">
+                <h:form>
+                    <div class="action-buttons">
+                        <h:commandButton value="← Back to Organizational View" 
+                                       styleClass="btn btn-secondary"
+                                       action="#{staffDirectoryBean.showOrganizationalView}"/>
+                        <h:commandButton value="🔍 New Search" 
+                                       styleClass="btn btn-primary"
+                                       action="#{staffDirectoryBean.showMainView}"/>
+                    </div>
+
+                    <h:panelGroup rendered="#{staffDirectoryBean.selectedUnit != null}">
+                        <h2>#{staffDirectoryBean.selectedUnit.name}</h2>
+                        <p class="text-muted">Organizational Unit</p>
+
+                        <div class="contacts-section">
+                            <h:panelGroup rendered="#{staffDirectoryBean.selectedUnit.hasContacts}">
+                                <table class="contacts-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Phone</th>
+                                            <th>Title</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ui:repeat value="#{staffDirectoryBean.selectedUnit.contacts}" var="contact"
+                                                  xmlns:ui="http://java.sun.com/jsf/facelets">
+                                            <tr>
+                                                <td>
+                                                    <div class="contact-name">#{contact.name}</div>
+                                                    <h:panelGroup rendered="#{not empty contact.email}">
+                                                        <div class="contact-email">
+                                                            <a href="mailto:#{contact.email}">#{contact.email}</a>
+                                                        </div>
+                                                    </h:panelGroup>
+                                                </td>
+                                                <td>
+                                                    <div class="contact-phone">#{contact.phone}</div>
+                                                </td>
+                                                <td>
+                                                    <div class="contact-title">#{contact.title}</div>
+                                                </td>
+                                            </tr>
+                                        </ui:repeat>
+                                    </tbody>
+                                </table>
+                            </h:panelGroup>
+
+                            <h:panelGroup rendered="#{not staffDirectoryBean.selectedUnit.hasContacts}">
+                                <div class="no-results">
+                                    No direct contacts available for this organizational unit.
+                                </div>
+                            </h:panelGroup>
+                        </div>
+                    </h:panelGroup>
+                </h:form>
+            </h:panelGroup>
+
+        </div>
+    </div>
+
+</h:body>
+</html>

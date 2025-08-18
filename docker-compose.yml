@@ -43,6 +43,22 @@ services:
       CATALINA_OPTS: "-Xmx512m -Xms256m"
     restart: unless-stopped
 
+  # Alberta Staff Directory Application (Legacy ICEfaces)
+  alberta-staff-directory:
+    image: tomcat:8.5-jdk8
+    container_name: icefaces-alberta-staff-directory
+    ports:
+      - "8091:8080"
+    volumes:
+      # Build the WAR first with: cd samples/core/alberta-staff-directory && mvn clean package
+      - ./samples/core/alberta-staff-directory/target/alberta-staff-directory.war:/usr/local/tomcat/webapps/alberta-staff-directory.war
+    networks:
+      - icefaces-network
+    environment:
+      TZ: "America/Vancouver"
+      CATALINA_OPTS: "-Xmx512m -Xms256m"
+    restart: unless-stopped
+
 volumes:
   mysql_data:
     driver: local

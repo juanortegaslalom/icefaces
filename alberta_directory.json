@@ -1,0 +1,2182 @@
+[
+  {
+    "ministry": "Legislative Branch",
+    "children": [
+      {
+        "department": "Legislative Assembly of Alberta",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Government Members",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "United Conservative Caucus Office",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "New Democratic Members (Official Opposition)",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "New Democratic Caucus Office",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Independent",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Legislative Assembly Office",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Speaker",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Clerk",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "House Services",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Journals",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Research and Committee Services",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Special Standing Committee on Members' Services",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Standing Committee on Alberta's Economic Future",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Standing Committee on the Alberta Heritage Savings Trust Fund",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Executive Branch",
+    "children": [
+      {
+        "office": "Office of the Premier",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "House Leader's Office",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Premier's Communications Office",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Premier's Southern Alberta Office",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Alberta First Committee",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Building Communities Committee",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Economic Development Committee",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Legislative Review Cabinet Committee",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Priorities Implementation Cabinet Committee",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Productivity Review Cabinet Committee",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Public Safety and Wellness Cabinet Committee",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Treasury Board",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Members of Executive Council",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Executive Council",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Advanced Education",
+    "children": [
+      {
+        "office": "Office of the Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Ministerial Correspondence Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Financial Services Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Financial Services - Executive Director's Office",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Financial Planning",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Financial Reporting and Consolidation",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Financial Operations and Projects",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "PSI Funding and Capital Planning",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "PSI Oversight and Accountability",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Legal Services",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Information and Technology Management Sector",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Client Service Delivery",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "External Stakeholder Relations",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Affordability and Utilities",
+    "children": [
+      {
+        "office": "Office of the Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Ministerial Correspondence Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Corporate Services Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Financial Services Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Policy, Performance and Agency Governance Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Affordability Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Utilities Consumer Advocate",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Affordability Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Utilities Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Generation, Transmission and Markets Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Generation and Transmission Policy Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Environment and Technology Integration Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Retail Policy, Distribution and Programs (RDP)",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Agriculture and Irrigation",
+    "children": [
+      {
+        "office": "Office of the Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Ministerial Correspondence Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Farmers' and Property Rights Advocate Offices",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Agencies",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "AFSC (Agriculture Financial Services Corporation)",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Alberta Grains Council",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Irrigation Council",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Marketing Council",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Policy, Strategy and Intergovernmental Relations (PSIR) Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "CAP Secretariat",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Corporate Innovation, Planning and Reporting",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Legislative Services and Governance Section",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Policy Advice, Coordination and Engagement",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Arts, Culture and Status of Women",
+    "children": [
+      {
+        "office": "Office of the Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Executive Correspondence Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Francophone Secretariat",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "French Translation Services",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Corporate Finance Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Corporate Supports",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Financial Reporting and Operations Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Financial Planning Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Heritage Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Policy and Program Coordination",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Ukrainian Cultural Heritage Village",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Rutherford House",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Seasonal Sites",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Assisted Living and Social Services",
+    "children": [
+      {
+        "office": "Office of the Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Ministerial Correspondence Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Corporate Finance and Accountability Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Corporate Accountability and Planning",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Corporate Planning and Reporting",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Internal Audit Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Quality Assurance and Accountability Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Training and Projects Solutions",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Financial Planning and Analysis Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Assisted Living Alberta Finance",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Financial Planning",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Regional Finance Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Financial Reporting and Operations Branch",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Children and Family Services",
+    "children": [
+      {
+        "office": "Office of the Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Ministerial Correspondence Unit (MCU)",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Corporate Finance",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Financial Planning and Initiatives",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Operations and Reporting",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Reporting and Revenue",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Revenue and Cost Sharing",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Payments and Systems",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Internal Audit and Policy",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Regional Finance",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Calgary / South",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Edmonton / Metis",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "North / Central",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Education and Childcare",
+    "children": [
+      {
+        "office": "Office of the Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Corporate Strategic Initiatives",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Executive Correspondence Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Alberta Teaching Profession Commission",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Investigations",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Professional Assurance",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Child Care Delivery Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Child Care Administration",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Child Care Delivery",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Northern Alberta",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Edmonton Child Care Licensing",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "North Central, Northeast, Northwest Child Care Licensing",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Southern Alberta",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Energy and Minerals",
+    "children": [
+      {
+        "office": "Office of the Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Ministerial Correspondence Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Energy Operations Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Energy Optimization Secretariat",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Oil Sands, Coal and Mineral Operations",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Applications and Compliance",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Coal and Mineral Development",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Royalty and Tenure",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "PETRINEX",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "PNG Tenure Operations Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Crown Agreement Management",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Agreement Administration",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Continuation & Validation",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Environment and Protected Areas",
+    "children": [
+      {
+        "office": "Office of the Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Ministerial Correspondence Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Environmental Law Team",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Environmental, Social and Governance (ESG)",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Chief Scientist",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Associate Minister of Water",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Financial Services Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Financial Administrative Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Administrative Services Section",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Financial Planning Section",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Contracts and Reporting Section",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Financial Operations and Reporting Section",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Air, Climate and Clean Technology Division",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": [
+      {
+        "name": "Toll Free Number",
+        "title": "",
+        "phone": "877-310-3773",
+        "email": ""
+      },
+      {
+        "name": "Toll Free Number",
+        "title": "",
+        "phone": "800-222-6514",
+        "email": ""
+      },
+      {
+        "name": "Toll Free Number",
+        "title": "",
+        "phone": "800-272-9600",
+        "email": ""
+      },
+      {
+        "name": "Toll Free Number",
+        "title": "",
+        "phone": "800-642-3800",
+        "email": ""
+      },
+      {
+        "name": "Toll Free Number",
+        "title": "",
+        "phone": "833-310-5869",
+        "email": ""
+      },
+      {
+        "name": "Toll Free Number",
+        "title": "",
+        "phone": "855-336-2628",
+        "email": ""
+      },
+      {
+        "name": "Toll Free Number",
+        "title": "",
+        "phone": "877-310-3773",
+        "email": ""
+      },
+      {
+        "name": "Toll Free Number",
+        "title": "",
+        "phone": "877-537-2757",
+        "email": ""
+      }
+    ]
+  },
+  {
+    "ministry": "Forestry and Parks",
+    "children": [
+      {
+        "office": "Office of the Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Corporate Strategic Services",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Governance and Legislative Services",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Planning and Reporting",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Policy and Innovation",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Ministerial Correspondence Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Forestry Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Strategy, Policy and Economics Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Forest Tenure, Trade and Economics Section",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Strategic Forestry Initiatives Section",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Forest Resource Management Section",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Timber Production and Audit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Forest Health and Adaptation Section",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Health",
+    "children": [
+      {
+        "office": "Office of the Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Ministerial Correspondence Team",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Acute Care Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Acute Care Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Acute Care Standards Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Acute Care Policy Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Emergency Health Services Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Licensing and Compliance Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Provincial Programs",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Quality Planning and Performance Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Finance and Capital Planning Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Financial Planning Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Financial Planning - Health Entities Unit",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Hospital and Surgical Health Services",
+    "children": [
+      {
+        "office": "Office of the Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Indigenous Relations",
+    "children": [
+      {
+        "office": "Office of the Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Ministerial Correspondence Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Indigenous Women's Initiatives (IWI) Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Consultation, Land and Policy (CLP) Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Land Claims",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Aboriginal Consultation Office (ACO)",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "North Region",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Southern Region",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Process Enhancement and Regulatory Efficiencies / Strategic Relations",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Strategic Engagement and Policy Innovation",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Metis Credible Assertion Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Knowledge Management",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Strategic Engagement and Relationships",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Infrastructure",
+    "children": [
+      {
+        "office": "Office of the Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Strategic Partnerships and Learning Facilities",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Alternative Capital Partnerships",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Alternative Capital Financing",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Learning Facilities Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Planning and Site Readiness",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "P3 Delivery",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "North Region",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Central Region",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "South Region",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Capital Projects Delivery Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Program Management and Integration",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Government Facilities Branch",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Jobs, Economy, Trade and Immigration",
+    "children": [
+      {
+        "office": "Office of the Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Ministerial Correspondence Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Travel Alberta",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Associate Minister of Multiculturalism",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Ministerial Correspondence Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Financial Services Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Financial and Corporate Services",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Financial Services",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Corporate Planning and Services",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Newcomer and Multicultural Supports (NMS) Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Multiculturalism and Anti-Racism Branch",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Justice",
+    "children": [
+      {
+        "office": "Office of the Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister, Justice",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Ministerial Correspondence Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Business Intelligence and Analytics",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Alberta Crown Prosecution Service Division (ACPS)",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Appeals, and Specialized Prosecution Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Specialized Prosecutions (Edmonton)",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Specialized Prosecutions (Calgary)",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Appeals Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Calgary Prosecutions",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Edmonton Prosecutions",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Crown Prosecutors",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Edmonton Rural and Regional Response Office (ERRRO)",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Operations and Strategic Support and Bail Prosecutions",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Mental Health and Addiction",
+    "children": [
+      {
+        "office": "Office of the Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Ministerial Correspondence Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Financial Services Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Capital Projects and Planning",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Policy and Programs Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "System Enhancement and Legislation Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Policy Implementation Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Legislation and Community Partnerships",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "System Design and Monitoring Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Implementation Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Policy and Research Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Special Projects Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "System Overview and Strategic Services Division",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Municipal Affairs",
+    "children": [
+      {
+        "office": "Office of the Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Executive Correspondence",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Financial Services",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Financial Planning and Reporting",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Financial Reporting and Systems",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Financial Planning and Analysis",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Financial Operations and Accountability",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Municipal Assessment and Grants Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Assessment and Property Tax Policy Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Grants and Education Property Tax Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Operating Programs and Special Initiatives",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Provincial Federal Programs",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Policy and Strategy",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Primary and Preventative Health Services",
+    "children": [
+      {
+        "office": "Office of the Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Health Workforce Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Health Professional Regulation and Physician Workforce Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Health Professional Regulation",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Physician Workforce",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Health Workforce Strategy and Policy Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Health Workforce Data Analytics and Reporting Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Health Workforce Strategy Policy, Implementation and Coordination Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Health Workforce Research and Programs",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Provider Compensation Operations Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Alternative Compensation Delivery Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Insured Services Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Strategic Engagement and Compensation Policy Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Budget and Analytics Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Strategic Compensation and Enagement Unit",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Public Safety and Emergency Services",
+    "children": [
+      {
+        "office": "Office of the Deputy Premier and Minister of Public Safety and Emergency Services",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Ministerial Correspondence Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Alberta Emergency Management Agency",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Deputy Managing Directors Office",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Strategy and Systems Support",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Strategic Systems",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Logistics Support",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "911 Team",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "EM Grants & Logistics",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Specialized Provincial Operations and Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Alberta First Responders Radio Communications System (AFRRCS)",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "AFRRCS Business Services",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "AFRRCS Operations",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Service Alberta and Red Tape Reduction",
+    "children": [
+      {
+        "office": "Office of the Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Ministerial Correspondence Unit (MCU)",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Strategic Planning and Financial Services / Senior Financial Officer",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Financial and Business Planning",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Property and Space Planning",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Reporting and Policy",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Financial Compliance and Operations",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Financial Reporting and Policy",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Strategic Contract",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Revenue Management",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Strategic Finance",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Alberta Gaming Liquor and Cannabis Commission",
+        "contacts": [
+          {
+            "name": "Toll Free Number",
+            "title": "",
+            "phone": "877 436-6336",
+            "email": ""
+          },
+          {
+            "name": "Toll Free Number",
+            "title": "",
+            "phone": "800 577-2522",
+            "email": ""
+          },
+          {
+            "name": "Toll Free Number",
+            "title": "",
+            "phone": "800 742-7818",
+            "email": ""
+          }
+        ],
+        "children": []
+      },
+      {
+        "division": "Consumer, Registry and Strategic Services Division",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Technology and Innovation",
+    "children": [
+      {
+        "office": "Office of the Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Strategic Planning and Financial Services / Senior Financial Officer",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Financial and Business Planning",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Property and Space Planning",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Reporting and Policy",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Financial Compliance and Operations",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Financial Reporting and Policy",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Strategic Contract",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Revenue Management",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Strategic Finance",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Ministerial Correspondence Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Cybersecurity Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "CyberAlberta Branch",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Tourism and Sport",
+    "children": [
+      {
+        "office": "Office of the Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Ministerial Correspondence Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Sport, Tourism and Recreation Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Sport, Physical Activity and Recreation Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Sector Development",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Multisport Games",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Policy and Strategy",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Operations and Sector Coordination",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Tourism and Regional Policy",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Tourism Policy and Strategy Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Alberta Sport Connection",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Transportation and Economic Corridors",
+    "children": [
+      {
+        "office": "Office of the Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Ministerial Correspondence Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Construction and Maintenance Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Strategy and Divisional Alignment",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Project Management Office",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Divisional Executive Operations",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Major Capital Projects",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Calgary Projects",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Water Management",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "North Team",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "South Team",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Sprinbank Team",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Central Region",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  },
+  {
+    "ministry": "Treasury Board and Finance",
+    "children": [
+      {
+        "office": "Office of the Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Deputy Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Communications",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Legislative Projects",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Ministerial Correspondence Unit",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "office": "Office of the Associate Deputy Minister",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Treasury Board Secretariat",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Budget Development and Systems",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "branch": "Capital Planning Branch",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Fiscal and Corporate Planning and Reporting",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "division": "Economics and Fiscal Policy Division",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Economics and Revenue Forecasting",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Economic Forecasting and Analysis",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Revenue and Economic Modelling",
+        "contacts": [],
+        "children": []
+      },
+      {
+        "department": "Royalty and Revenue Reporting",
+        "contacts": [],
+        "children": []
+      }
+    ],
+    "contacts": []
+  }
+]

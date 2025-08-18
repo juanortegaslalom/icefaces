@@ -1,0 +1,369 @@
+/* Alberta Government Staff Directory Styles */
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+.alberta-header {
+    background: linear-gradient(135deg, #1e7fb8 0%, #0b4d6b 100%);
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.alberta-header .logo {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.alberta-header .title {
+    font-size: 36px;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+.alberta-header .subtitle {
+    font-size: 18px;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+/* Navigation Styles */
+.nav-breadcrumb {
+    background-color: #0a4a6e;
+    padding: 15px 0;
+    color: white;
+}
+
+.nav-breadcrumb a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+.nav-breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content */
+.main-content {
+    background: white;
+    margin: 20px 0;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Search Section */
+.search-section {
+    background: #f1f8ff;
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    border-left: 4px solid #1e7fb8;
+}
+
+.search-section h2 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.search-section p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #1e7fb8;
+}
+
+.search-button {
+    padding: 12px 25px;
+    background-color: #1e7fb8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.search-button:hover {
+    background-color: #0b4d6b;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.nav-link {
+    color: #1e7fb8;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 15px 20px;
+    border: 2px solid #1e7fb8;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: #1e7fb8;
+    color: white;
+}
+
+/* Organizational Tree */
+.org-tree {
+    margin: 20px 0;
+}
+
+.org-unit {
+    margin: 5px 0;
+    padding: 10px;
+    border-left: 3px solid #e0e0e0;
+}
+
+.org-unit.ministry {
+    border-left-color: #1e7fb8;
+    background-color: #f8fcff;
+}
+
+.org-unit.division {
+    border-left-color: #4a90a4;
+    background-color: #f5f9fa;
+    margin-left: 20px;
+}
+
+.org-unit.branch {
+    border-left-color: #6ba0b8;
+    background-color: #f2f7f9;
+    margin-left: 40px;
+}
+
+.org-unit.office {
+    border-left-color: #8bb0c8;
+    background-color: #f0f6f8;
+    margin-left: 60px;
+}
+
+.org-unit-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 0;
+}
+
+.org-unit-header:hover {
+    background-color: rgba(30, 127, 184, 0.1);
+}
+
+.expand-icon {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #1e7fb8;
+    width: 20px;
+    text-align: center;
+}
+
+.org-unit-name {
+    font-weight: bold;
+    color: #333;
+    flex: 1;
+}
+
+.contact-count {
+    color: #666;
+    font-size: 12px;
+    background-color: #e0e0e0;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 10px;
+}
+
+.org-unit-children {
+    margin-top: 10px;
+}
+
+/* Contact Display */
+.contacts-section {
+    margin-top: 20px;
+}
+
+.contacts-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.contacts-table th {
+    background-color: #4a719c;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.contacts-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    vertical-align: top;
+}
+
+.contacts-table tr:hover {
+    background-color: #f5f9ff;
+}
+
+.contact-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.contact-title {
+    color: #666;
+    font-style: italic;
+}
+
+.contact-phone {
+    color: #1e7fb8;
+    font-weight: bold;
+}
+
+.contact-email {
+    color: #1e7fb8;
+}
+
+.contact-email a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.contact-email a:hover {
+    text-decoration: underline;
+}
+
+/* Action Buttons */
+.action-buttons {
+    margin: 20px 0;
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #1e7fb8;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0b4d6b;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #545b62;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .search-box {
+        flex-direction: column;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .contacts-table {
+        font-size: 14px;
+    }
+    
+    .contacts-table th,
+    .contacts-table td {
+        padding: 8px;
+    }
+}
+
+/* Loading and States */
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+}
+
+.no-results {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: #666;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.hidden {
+    display: none;
+}
