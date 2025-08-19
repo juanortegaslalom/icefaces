@@ -1,0 +1,173 @@
+/* Alberta Government Staff Directory - Global Styles */
+@use '@angular/material' as mat;
+
+// Custom Alberta Government color palette
+$alberta-blue: (
+  50: #e3f2fd,
+  100: #bbdefb,
+  200: #90caf9,
+  300: #64b5f6,
+  400: #42a5f5,
+  500: #1e7fb8, // Primary Alberta blue
+  600: #1976d2,
+  700: #1565c0,
+  800: #0d47a1,
+  900: #0b4d6b, // Dark Alberta blue
+  A100: #82b1ff,
+  A200: #448aff,
+  A400: #2979ff,
+  A700: #2962ff,
+  contrast: (
+    50: black,
+    100: black,
+    200: black,
+    300: black,
+    400: black,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: black,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+// Define the theme
+$alberta-theme: mat.define-light-theme((
+  color: (
+    primary: mat.define-palette($alberta-blue),
+    accent: mat.define-palette(mat.$orange-palette, A200, A100, A400),
+    warn: mat.define-palette(mat.$red-palette),
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
+
+// Include theme styles
+@include mat.core();
+@include mat.all-component-themes($alberta-theme);
+
+/* Global Styles */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Alberta Government Branding */
+.alberta-header {
+  background: linear-gradient(135deg, #1e7fb8 0%, #0b4d6b 100%);
+  color: white;
+  padding: 24px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.alberta-logo {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.alberta-title {
+  font-size: 36px;
+  font-weight: 300;
+  margin-bottom: 8px;
+}
+
+.alberta-subtitle {
+  font-size: 18px;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+/* Loading States */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+/* Search Enhancement */
+.search-highlight {
+  background-color: #fff3cd;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+/* Card Animations */
+.contact-card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  }
+}
+
+/* Responsive Grid */
+.responsive-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .alberta-title {
+    font-size: 28px;
+  }
+  
+  .responsive-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Accessibility Improvements */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .contact-card {
+    border: 2px solid;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .contact-card {
+    transition: none;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .alberta-header {
+    background: #1e7fb8 !important;
+    -webkit-print-color-adjust: exact;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
