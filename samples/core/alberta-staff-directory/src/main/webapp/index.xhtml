@@ -75,14 +75,6 @@
                     <h:form>
                         <div class="nav-links">
                             <h:commandLink styleClass="nav-link"
-                                          value="► Organizational view"
-                                          action="#{staffDirectoryBean.showOrganizationalView}"/>
-                            
-                            <a href="#" class="nav-link">► Legislative Branch PDF</a>
-                            
-                            <a href="#" class="nav-link">► Contact your MLA</a>
-                            
-                            <h:commandLink styleClass="nav-link"
                                           value="► Contact a Minister"
                                           action="#{staffDirectoryBean.showContactMinister}"/>
                             
@@ -99,108 +91,6 @@
 
             </h:panelGroup>
 
-            <!-- Organizational View -->
-            <h:panelGroup rendered="#{staffDirectoryBean.organizationalView}">
-                <ice:form>
-                    <div class="action-buttons">
-                        <ice:commandButton value="← Back to Main" 
-                                       styleClass="btn btn-secondary"
-                                       immediate="true"
-                                       action="#{staffDirectoryBean.showMainView}"/>
-                    </div>
-
-                    <h2>Organizational Units</h2>
-                    
-                    <!-- Search within org view -->
-                    <div class="search-box mb-20">
-                        <ice:inputText value="#{staffDirectoryBean.searchTerm}" 
-                                    styleClass="search-input"
-                                    placeholder="Search for organizational units..."/>
-                        <ice:commandButton value="Search" 
-                                       styleClass="search-button"
-                                       action="#{staffDirectoryBean.search}"/>
-                    </div>
-
-                    <!-- Expand/Collapse All -->
-                    <div class="action-buttons">
-                        <ice:commandButton value="+ Expand All" styleClass="btn btn-primary"/>
-                        <ice:commandButton value="- Collapse All" styleClass="btn btn-secondary"/>
-                    </div>
-
-                    <!-- Ministry Tree -->
-                    <div class="org-tree">
-                        <ice:dataTable value="#{staffDirectoryBean.ministries}" var="ministry" 
-                                    styleClass="org-units-table" headerClass="hidden">
-                            <ice:column>
-                                <div class="org-unit ministry">
-                                    <div class="org-unit-header">
-                                        <ice:commandLink action="#{staffDirectoryBean.toggleExpansion(ministry)}"
-                                                        rendered="#{ministry.hasChildren}">
-                                            <span class="expand-icon">
-                                                #{ministry.expanded ? '−' : '+'}
-                                            </span>
-                                        </ice:commandLink>
-                                        <span class="expand-icon" 
-                                              rendered="#{not ministry.hasChildren}">●</span>
-                                        <ice:commandLink action="#{staffDirectoryBean.selectUnit(ministry)}">
-                                            <span class="org-unit-name">#{ministry.name}</span>
-                                        </ice:commandLink>
-                                        <span class="contact-count">#{ministry.totalContacts} contacts</span>
-                                    </div>
-                                    
-                                    <!-- Children (Departments/Divisions) -->
-                                    <h:panelGroup rendered="#{ministry.expanded and ministry.hasChildren}">
-                                        <div class="org-unit-children">
-                                            <ice:dataTable value="#{ministry.children}" var="division" 
-                                                        styleClass="child-units-table" headerClass="hidden">
-                                                <ice:column>
-                                                    <div class="org-unit division">
-                                                        <div class="org-unit-header">
-                                                            <ice:commandLink action="#{staffDirectoryBean.toggleExpansion(division)}"
-                                                                            rendered="#{division.hasChildren}">
-                                                                <span class="expand-icon">
-                                                                    #{division.expanded ? '−' : '+'}
-                                                                </span>
-                                                            </ice:commandLink>
-                                                            <span class="expand-icon" 
-                                                                  rendered="#{not division.hasChildren}">●</span>
-                                                            <ice:commandLink action="#{staffDirectoryBean.selectUnit(division)}">
-                                                                <span class="org-unit-name">#{division.name}</span>
-                                                            </ice:commandLink>
-                                                            <span class="contact-count">#{division.totalContacts} contacts</span>
-                                                        </div>
-                                                        
-                                                        <!-- Sub-children (Branches/Offices) -->
-                                                        <h:panelGroup rendered="#{division.expanded and division.hasChildren}">
-                                                            <div class="org-unit-children">
-                                                                <ice:dataTable value="#{division.children}" var="branch" 
-                                                                            styleClass="child-units-table" headerClass="hidden">
-                                                                    <ice:column>
-                                                                        <div class="org-unit branch">
-                                                                            <div class="org-unit-header">
-                                                                                <span class="expand-icon">●</span>
-                                                                                <ice:commandLink action="#{staffDirectoryBean.selectUnit(branch)}">
-                                                                                    <span class="org-unit-name">#{branch.name}</span>
-                                                                                </ice:commandLink>
-                                                                                <span class="contact-count">#{branch.totalContacts} contacts</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </ice:column>
-                                                                </ice:dataTable>
-                                                            </div>
-                                                        </h:panelGroup>
-                                                    </div>
-                                                </ice:column>
-                                            </ice:dataTable>
-                                        </div>
-                                    </h:panelGroup>
-                                </div>
-                            </ice:column>
-                        </ice:dataTable>
-                    </div>
-
-                </ice:form>
-            </h:panelGroup>
 
             <!-- Deputy Minister List View -->
             <h:panelGroup rendered="#{staffDirectoryBean.deputyMinisterListView}">
@@ -240,10 +130,10 @@
                     <h2>Spokesperson contacts</h2>
                     <p class="text-muted">Select a department to view spokesperson contact information.</p>
 
-                    <div class="nav-links">
+                    <div class="spokesperson-grid">
                         <ui:repeat value="#{staffDirectoryBean.selectedUnit.children}" var="department"
                                   xmlns:ui="http://java.sun.com/jsf/facelets">
-                            <h:commandLink styleClass="nav-link"
+                            <h:commandLink styleClass="spokesperson-link"
                                           action="#{staffDirectoryBean.selectSpokespersonDepartment(department)}">
                                 ► #{department.name}
                             </h:commandLink>

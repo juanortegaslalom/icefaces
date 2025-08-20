@@ -95,13 +95,6 @@ public class StaffDirectoryBean implements Serializable {
         }
     }
     
-    /**
-     * Navigate to organizational view
-     */
-    public void showOrganizationalView() {
-        this.currentView = "organizational";
-        this.selectedUnit = null;
-    }
     
     /**
      * Navigate to main view
@@ -199,9 +192,6 @@ public class StaffDirectoryBean implements Serializable {
         return "main".equals(currentView);
     }
     
-    public boolean isOrganizationalView() {
-        return "organizational".equals(currentView);
-    }
     
     public boolean isContactsView() {
         return "contacts".equals(currentView);
@@ -331,18 +321,37 @@ public class StaffDirectoryBean implements Serializable {
                 // Create a synthetic unit that combines all child contacts
                 OrganizationalUnit combinedUnit = new OrganizationalUnit("Administrative Services", "ministry");
                 
+                // Add ministry-level contacts first
+                if (ministry.getContacts() != null) {
+                    for (Contact contact : ministry.getContacts()) {
+                        combinedUnit.addContact(contact);
+                    }
+                }
+                
                 // Add all contacts from all child departments
-                for (OrganizationalUnit department : ministry.getChildren()) {
-                    if (department.getContacts() != null) {
-                        for (Contact contact : department.getContacts()) {
-                            combinedUnit.addContact(contact);
+                if (ministry.getChildren() != null) {
+                    for (OrganizationalUnit department : ministry.getChildren()) {
+                        if (department.getContacts() != null) {
+                            for (Contact contact : department.getContacts()) {
+                                combinedUnit.addContact(contact);
+                            }
                         }
                     }
                 }
                 
+                System.out.println("DEBUG: Administrative Services ministry found with " + 
+                    (ministry.getChildren() != null ? ministry.getChildren().size() : 0) + " child units and " +
+                    combinedUnit.getContacts().size() + " total contacts");
+                
                 this.selectedUnit = combinedUnit;
                 return;
             }
+        }
+        
+        System.err.println("ERROR: Administrative Services ministry not found!");
+        System.out.println("Available ministries:");
+        for (OrganizationalUnit ministry : ministries) {
+            System.out.println("  - " + ministry.getName());
         }
     }
     
@@ -394,12 +403,6 @@ public class StaffDirectoryBean implements Serializable {
         return isMainView();
     }
     
-    /**
-     * Getter method for showOrganizationalView action (workaround for JSF EL evaluation)
-     */
-    public String getShowOrganizationalView() {
-        return null; // This is just to satisfy EL evaluation, actual action method exists
-    }
     
     /**
      * Getter method for search action (workaround for JSF EL evaluation)
