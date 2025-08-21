@@ -1,7 +1,6 @@
 package org.icefaces.samples.showcase.alberta.dao;
 
 import org.icefaces.samples.showcase.alberta.model.Contact;
-import org.icefaces.samples.showcase.alberta.model.OrganizationalUnit;
 import org.icefaces.samples.showcase.alberta.util.DatabaseManager;
 
 import java.sql.Connection;
@@ -9,12 +8,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
- * Data Access Object for Alberta Staff Directory data
+ * Data Access Object for Alberta Staff Directory
+ * - Simple JDBC operations
+ * - PostgreSQL-compatible field naming
  */
 public class AlbertaDirectoryDAO {
     
@@ -25,259 +24,105 @@ public class AlbertaDirectoryDAO {
     }
     
     /**
-     * Get all ministries with their hierarchical organizational structure
+     * Get all contacts from database
      */
-    public List<OrganizationalUnit> getAllMinistries() {
-        List<OrganizationalUnit> ministries = new ArrayList<OrganizationalUnit>();
-        Connection conn = null;
-        
-        try {
-            conn = dbManager.getConnection();
-            
-            // First, load all ministries
-            String ministriesQuery = "SELECT id, name FROM ministries ORDER BY name";
-            PreparedStatement ministriesStmt = conn.prepareStatement(ministriesQuery);
-            ResultSet ministriesRs = ministriesStmt.executeQuery();
-            
-            Map<Integer, OrganizationalUnit> ministryMap = new HashMap<Integer, OrganizationalUnit>();
-            
-            while (ministriesRs.next()) {
-                int ministryId = ministriesRs.getInt("id");
-                String ministryName = ministriesRs.getString("name");
-                
-                OrganizationalUnit ministry = new OrganizationalUnit(ministryName, "ministry");
-                ministries.add(ministry);
-                ministryMap.put(ministryId, ministry);
-            }
-            ministriesRs.close();
-            ministriesStmt.close();
-            
-            // Load organizational units for each ministry
-            String unitsQuery = "SELECT id, ministry_id, parent_id, name, unit_type FROM organizational_units ORDER BY ministry_id, parent_id, name";
-            PreparedStatement unitsStmt = conn.prepareStatement(unitsQuery);
-            ResultSet unitsRs = unitsStmt.executeQuery();
-            
-            Map<Integer, OrganizationalUnit> unitMap = new HashMap<Integer, OrganizationalUnit>();
-            
-            while (unitsRs.next()) {
-                int unitId = unitsRs.getInt("id");
-                int ministryId = unitsRs.getInt("ministry_id");
-                Integer parentId = unitsRs.getObject("parent_id", Integer.class);
-                String unitName = unitsRs.getString("name");
-                String unitType = unitsRs.getString("unit_type");
-                
-                OrganizationalUnit unit = new OrganizationalUnit(unitName, unitType);
-                unitMap.put(unitId, unit);
-                
-                // Attach to parent (either ministry or parent unit)
-                if (parentId == null) {
-                    // This unit belongs directly to a ministry
-                    OrganizationalUnit ministry = ministryMap.get(ministryId);
-                    if (ministry != null) {
-                        ministry.addChild(unit);
-                    }
-                } else {
-                    // This unit belongs to a parent unit
-                    OrganizationalUnit parentUnit = unitMap.get(parentId);
-                    if (parentUnit != null) {
-                        parentUnit.addChild(unit);
-                    }
-                }
-            }
-            unitsRs.close();
-            unitsStmt.close();
-            
-            // Load contacts for ministries and organizational units
-            String contactsQuery = "SELECT c.name, c.title, c.phone, c.email, c.ministry_id, c.organizational_unit_id " +
-                                 "FROM contacts c ORDER BY c.ministry_id, c.organizational_unit_id, c.name";
-            PreparedStatement contactsStmt = conn.prepareStatement(contactsQuery);
-            ResultSet contactsRs = contactsStmt.executeQuery();
-            
-            while (contactsRs.next()) {
-                String contactName = contactsRs.getString("name");
-                String contactTitle = contactsRs.getString("title");
-                String contactPhone = contactsRs.getString("phone");
-                String contactEmail = contactsRs.getString("email");
-                int ministryId = contactsRs.getInt("ministry_id");
-                Integer unitId = contactsRs.getObject("organizational_unit_id", Integer.class);
-                
-                Contact contact = new Contact(contactName, contactTitle, contactPhone, contactEmail);
-                
-                if (unitId != null) {
-                    // Contact belongs to an organizational unit
-                    OrganizationalUnit unit = unitMap.get(unitId);
-                    if (unit != null) {
-                        unit.addContact(contact);
-                    }
-                } else {
-                    // Contact belongs directly to a ministry
-                    OrganizationalUnit ministry = ministryMap.get(ministryId);
-                    if (ministry != null) {
-                        ministry.addContact(contact);
-                    }
-                }
-            }
-            contactsRs.close();
-            contactsStmt.close();
-            
-            System.out.println("Loaded " + ministries.size() + " ministries from database");
-            
-        } catch (SQLException e) {
-            System.err.println("Error loading ministries from database: " + e.getMessage());
-            e.printStackTrace();
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    System.err.println("Error closing database connection: " + e.getMessage());
-                }
-            }
-        }
-        
-        return ministries;
+    public List<Contact> getAllContacts() {
+        String query = "SELECT name, title, phone, email, ministry, role_type FROM contacts ORDER BY name";
+        return executeQuery(query);
     }
     
     /**
-     * Search for contacts by name, title, or ministry
+     * Search contacts by name, title, or ministry
      */
     public List<Contact> searchContacts(String searchTerm) {
-        List<Contact> results = new ArrayList<Contact>();
-        
         if (searchTerm == null || searchTerm.trim().isEmpty()) {
-            return results;
+            return getAllContacts();
         }
         
+        List<Contact> contacts = new ArrayList<Contact>();
         Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
         
         try {
             conn = dbManager.getConnection();
+            String query = "SELECT name, title, phone, email, ministry, role_type FROM contacts " +
+                          "WHERE LOWER(name) LIKE ? OR LOWER(title) LIKE ? OR LOWER(ministry) LIKE ? " +
+                          "ORDER BY name";
+            stmt = conn.prepareStatement(query);
+            String searchPattern = "%" + searchTerm.toLowerCase() + "%";
+            stmt.setString(1, searchPattern);
+            stmt.setString(2, searchPattern);
+            stmt.setString(3, searchPattern);
             
-            // Search contacts by name, title, ministry name, or organizational unit name
-            String searchQuery = 
-                "SELECT DISTINCT c.name, c.title, c.phone, c.email " +
-                "FROM contacts c " +
-                "LEFT JOIN ministries m ON c.ministry_id = m.id " +
-                "LEFT JOIN organizational_units ou ON c.organizational_unit_id = ou.id " +
-                "WHERE LOWER(c.name) LIKE ? " +
-                "   OR LOWER(c.title) LIKE ? " +
-                "   OR LOWER(m.name) LIKE ? " +
-                "   OR LOWER(ou.name) LIKE ? " +
-                "ORDER BY c.name";
-            
-            PreparedStatement searchStmt = conn.prepareStatement(searchQuery);
-            String searchPattern = "%" + searchTerm.trim().toLowerCase() + "%";
-            
-            searchStmt.setString(1, searchPattern);
-            searchStmt.setString(2, searchPattern);
-            searchStmt.setString(3, searchPattern);
-            searchStmt.setString(4, searchPattern);
-            
-            ResultSet searchRs = searchStmt.executeQuery();
-            
-            while (searchRs.next()) {
-                String contactName = searchRs.getString("name");
-                String contactTitle = searchRs.getString("title");
-                String contactPhone = searchRs.getString("phone");
-                String contactEmail = searchRs.getString("email");
-                
-                Contact contact = new Contact(contactName, contactTitle, contactPhone, contactEmail);
-                results.add(contact);
-            }
-            
-            searchRs.close();
-            searchStmt.close();
-            
-            System.out.println("Search for '" + searchTerm + "' returned " + results.size() + " results from database");
+            rs = stmt.executeQuery();
+            contacts = mapResultSetToContacts(rs);
             
         } catch (SQLException e) {
-            System.err.println("Error searching contacts in database: " + e.getMessage());
+            System.err.println("Error searching contacts: " + e.getMessage());
             e.printStackTrace();
         } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    System.err.println("Error closing database connection: " + e.getMessage());
-                }
-            }
+            closeResources(rs, stmt, conn);
         }
         
-        return results;
-    }
-    
-    
-    /**
-     * Get total count of ministries
-     */
-    public int getMinistryCount() {
-        Connection conn = null;
-        int count = 0;
-        
-        try {
-            conn = dbManager.getConnection();
-            
-            String countQuery = "SELECT COUNT(*) as ministry_count FROM ministries";
-            PreparedStatement countStmt = conn.prepareStatement(countQuery);
-            ResultSet countRs = countStmt.executeQuery();
-            
-            if (countRs.next()) {
-                count = countRs.getInt("ministry_count");
-            }
-            
-            countRs.close();
-            countStmt.close();
-            
-        } catch (SQLException e) {
-            System.err.println("Error counting ministries in database: " + e.getMessage());
-            e.printStackTrace();
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    System.err.println("Error closing database connection: " + e.getMessage());
-                }
-            }
-        }
-        
-        return count;
+        return contacts;
     }
     
     /**
-     * Get total count of contacts
+     * Filter contacts by role type
      */
-    public int getContactCount() {
+    public List<Contact> filterByRole(List<Contact> contacts, String roleType) {
+        List<Contact> filtered = new ArrayList<Contact>();
+        for (Contact contact : contacts) {
+            if (roleType.equals(contact.getRole_type())) {
+                filtered.add(contact);
+            }
+        }
+        return filtered;
+    }
+    
+    // Helper methods to reduce code duplication
+    
+    private List<Contact> executeQuery(String query) {
+        List<Contact> contacts = new ArrayList<Contact>();
         Connection conn = null;
-        int count = 0;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
         
         try {
             conn = dbManager.getConnection();
-            
-            String countQuery = "SELECT COUNT(*) as contact_count FROM contacts";
-            PreparedStatement countStmt = conn.prepareStatement(countQuery);
-            ResultSet countRs = countStmt.executeQuery();
-            
-            if (countRs.next()) {
-                count = countRs.getInt("contact_count");
-            }
-            
-            countRs.close();
-            countStmt.close();
+            stmt = conn.prepareStatement(query);
+            rs = stmt.executeQuery();
+            contacts = mapResultSetToContacts(rs);
             
         } catch (SQLException e) {
-            System.err.println("Error counting contacts in database: " + e.getMessage());
+            System.err.println("Error executing query: " + e.getMessage());
             e.printStackTrace();
         } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    System.err.println("Error closing database connection: " + e.getMessage());
-                }
-            }
+            closeResources(rs, stmt, conn);
         }
         
-        return count;
+        return contacts;
+    }
+    
+    private List<Contact> mapResultSetToContacts(ResultSet rs) throws SQLException {
+        List<Contact> contacts = new ArrayList<Contact>();
+        while (rs.next()) {
+            Contact contact = new Contact();
+            contact.setName(rs.getString("name"));
+            contact.setTitle(rs.getString("title"));
+            contact.setPhone(rs.getString("phone"));
+            contact.setEmail(rs.getString("email"));
+            contact.setMinistry(rs.getString("ministry"));
+            contact.setRole_type(rs.getString("role_type"));
+            contacts.add(contact);
+        }
+        return contacts;
+    }
+    
+    private void closeResources(ResultSet rs, PreparedStatement stmt, Connection conn) {
+        if (rs != null) try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+        if (stmt != null) try { stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+        if (conn != null) try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
     }
 }

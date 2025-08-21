@@ -143,77 +143,18 @@ body {
     color: white;
 }
 
-/* Organizational Tree */
-.org-tree {
-    margin: 20px 0;
+.nav-link.disabled {
+    color: #999;
+    border-color: #ddd;
+    cursor: not-allowed;
 }
 
-.org-unit {
-    margin: 5px 0;
-    padding: 10px;
-    border-left: 3px solid #e0e0e0;
+.nav-link.disabled:hover {
+    background-color: transparent;
+    color: #999;
 }
 
-.org-unit.ministry {
-    border-left-color: #1e7fb8;
-    background-color: #f8fcff;
-}
-
-.org-unit.division {
-    border-left-color: #4a90a4;
-    background-color: #f5f9fa;
-    margin-left: 20px;
-}
-
-.org-unit.branch {
-    border-left-color: #6ba0b8;
-    background-color: #f2f7f9;
-    margin-left: 40px;
-}
-
-.org-unit.office {
-    border-left-color: #8bb0c8;
-    background-color: #f0f6f8;
-    margin-left: 60px;
-}
-
-.org-unit-header {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    padding: 8px 0;
-}
-
-.org-unit-header:hover {
-    background-color: rgba(30, 127, 184, 0.1);
-}
-
-.expand-icon {
-    margin-right: 10px;
-    font-weight: bold;
-    color: #1e7fb8;
-    width: 20px;
-    text-align: center;
-}
-
-.org-unit-name {
-    font-weight: bold;
-    color: #333;
-    flex: 1;
-}
-
-.contact-count {
-    color: #666;
-    font-size: 12px;
-    background-color: #e0e0e0;
-    padding: 2px 8px;
-    border-radius: 12px;
-    margin-left: 10px;
-}
-
-.org-unit-children {
-    margin-top: 10px;
-}
+/* Removed organizational tree styles - not needed for simplified app */
 
 /* Contact Display */
 .contacts-section {
@@ -272,6 +213,11 @@ body {
     text-decoration: underline;
 }
 
+.contact-ministry {
+    color: #666;
+    font-size: 14px;
+}
+
 /* Action Buttons */
 .action-buttons {
     margin: 20px 0;
@@ -308,42 +254,13 @@ body {
     background-color: #545b62;
 }
 
-/* Spokesperson Grid Layout */
-.spokesperson-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 15px;
-    margin: 30px 0;
-}
-
-.spokesperson-link {
-    color: #1e7fb8;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 15px 20px;
-    border: 2px solid #1e7fb8;
-    border-radius: 5px;
-    display: block;
-    text-align: center;
-    transition: all 0.3s ease;
-    background-color: #fff;
-}
-
-.spokesperson-link:hover {
-    background-color: #1e7fb8;
-    color: white;
-}
+/* Removed spokesperson grid - simplified app uses regular navigation */
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-links {
         flex-direction: column;
         gap: 15px;
-    }
-    
-    .spokesperson-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
     }
     
     .search-box {
